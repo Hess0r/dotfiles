@@ -9,7 +9,6 @@ set number
 
 " col and row info on bottom right
 set ruler
-
 " show command insert mode
 set showmode
 
@@ -39,7 +38,9 @@ set icon
 
 set laststatus=2
 
-syntax enable
+set background=dark
+
+syntax on
 
 set ttyfast
 
