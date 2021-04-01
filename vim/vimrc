@@ -1,6 +1,6 @@
 let skip_defaults_vim=1
 set nocompatible
-
+  
 " autoindent new lines
 set autoindent
 
@@ -57,6 +57,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'https://github.com/joshdick/onedark.vim.git'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "colorscheme onedark
