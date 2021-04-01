@@ -38,11 +38,12 @@ set icon
 
 set laststatus=2
 
-set background=dark
+"set background=dark
+color elflord
 
 syntax on
 
-set ttyfast
+"set ttyfast
 
 filetype plugin on
 
@@ -58,8 +59,8 @@ Plug 'https://github.com/joshdick/onedark.vim.git'
 Plug 'sheerun/vim-polyglot'
 call plug#end()
 
-colorscheme onedark
-set termguicolors
+"colorscheme onedark
+"set termguicolors
 
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = 'goimports'
