@@ -46,6 +46,7 @@ syntax on
 "set ttyfast
 
 filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 if v:version >= 800 && executable('curl') && empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
