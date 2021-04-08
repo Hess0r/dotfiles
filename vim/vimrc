@@ -39,7 +39,7 @@ set icon
 set laststatus=2
 
 "set background=dark
-color elflord
+colorscheme elflord
 
 syntax on
 
@@ -59,10 +59,13 @@ Plug 'itchyny/lightline.vim'
 Plug 'https://github.com/joshdick/onedark.vim.git'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
+Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 call plug#end()
 
-"colorscheme onedark
-"set termguicolors
+" set onehalf colors
+colorscheme onehalfdark
+set termguicolors
+let g:lightline = { 'colorscheme': 'onehalfdark' }
 
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = 'goimports'

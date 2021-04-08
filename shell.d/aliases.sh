@@ -12,7 +12,6 @@ alias l='ls -CF'
 
 # docker-compose aliases
 alias dco='docker-compose'
-
 alias dcb='docker-compose build'
 alias dce='docker-compose exec'
 alias dcps='docker-compose ps'
