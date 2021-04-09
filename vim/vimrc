@@ -63,9 +63,11 @@ Plug 'sonph/onehalf', { 'rtp': 'vim/' }
 call plug#end()
 
 " set onehalf colors
-colorscheme onehalfdark
-set termguicolors
 let g:lightline = { 'colorscheme': 'onehalfdark' }
+if has("termguicolors")
+  set termguicolors
+endif
+colorscheme onehalfdark
 
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = 'goimports'
