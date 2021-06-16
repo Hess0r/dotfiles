@@ -28,3 +28,5 @@ alias dclf='docker-compose logs -f'
 alias dcpull='docker-compose pull'
 alias dcstart='docker-compose start'
 alias dck='docker-compose kill'
+
+alias sail='./vendor/bin/sail'
