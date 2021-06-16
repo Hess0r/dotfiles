@@ -38,6 +38,9 @@ set icon
 
 set laststatus=2
 
+set visualbell
+set t_vb=
+
 "set background=dark
 colorscheme elflord
 
