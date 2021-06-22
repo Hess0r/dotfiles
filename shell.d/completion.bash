@@ -9,3 +9,5 @@ fi
 if type kubectl &>/dev/null; then
   source <(kubectl completion bash)
 fi
+
+[ -f /usr/share/doc/fzf/examples/completion.bash ] && source /usr/share/doc/fzf/examples/completion.bash

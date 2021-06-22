@@ -1,6 +1,6 @@
 let skip_defaults_vim=1
 set nocompatible
-  
+
 " autoindent new lines
 set autoindent
 
@@ -41,6 +41,12 @@ set laststatus=2
 set visualbell
 set t_vb=
 
+" coc.nvim settings
+set hidden
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+
 "set background=dark
 colorscheme elflord
 
@@ -57,12 +63,13 @@ if v:version >= 800 && executable('curl') && empty(glob('~/.vim/autoload/plug.vi
 endif
 
 call plug#begin('~/.vimplugins')
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'itchyny/lightline.vim'
-Plug 'https://github.com/joshdick/onedark.vim.git'
-Plug 'sheerun/vim-polyglot'
-Plug 'tpope/vim-fugitive'
-Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+  Plug 'itchyny/lightline.vim'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'tpope/vim-fugitive'
+  Plug 'sonph/onehalf', { 'rtp': 'vim/' }
+  Plug 'preservim/nerdtree'
+  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
 
 " set onehalf colors
@@ -72,6 +79,7 @@ if has("termguicolors")
 endif
 colorscheme onehalfdark
 
+"Vim-go stuff
 let g:go_fmt_fail_silently = 0
 let g:go_fmt_command = 'goimports'
 let g:go_fmt_autosave = 1
@@ -90,4 +98,30 @@ let g:go_highlight_diagnostic_warnings = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 0
 
+" coc.nvim stuff 
+let g:coc_global_extensions = [ 'coc-tsserver', 'coc-json' ]
+
+" keymapings
+nnoremap <C-b> :NERDTreeToggle<CR>
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+  \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 autocmd FileType go nmap <leader>r :GoRun
+autocmd FileType json syntax match Comment +\/\/.\+$+

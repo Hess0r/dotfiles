@@ -45,6 +45,7 @@ source "$HOME/.shell.d/prompt.sh"
 source "$HOME/.shell.d/aliases.sh"
 source "$HOME/.shell.d/completion.bash"
 source "$HOME/.shell.d/direnv.bash"
+source "$HOME/.shell.d/fzf.sh"
 
 [ -f "$HOME/.secrets/keys.sh" ] && source "$HOME/.secrets/keys.sh"
 
