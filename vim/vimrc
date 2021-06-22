@@ -101,8 +101,7 @@ let g:go_auto_sameids = 0
 " coc.nvim stuff 
 let g:coc_global_extensions = [ 'coc-tsserver', 'coc-json' ]
 
-" keymapings
-nnoremap <C-b> :NERDTreeToggle<CR>
+  " tab for navigation
 inoremap <silent><expr> <TAB>
   \ pumvisible() ? "\<C-n>" :
   \ <SID>check_back_space() ? "\<TAB>" :
@@ -114,14 +113,32 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1] =~# '\s'
 endfunction
 
+  " <c-space> to trigger completion
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
+  " <CR> to select
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
   \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+  " <C-f> and <C-b> to scroll floating window
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
+  " :Format to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" keymapings
+nnoremap <C-b> :NERDTreeToggle<CR>
 
 autocmd FileType go nmap <leader>r :GoRun
 autocmd FileType json syntax match Comment +\/\/.\+$+
