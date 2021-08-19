@@ -166,10 +166,10 @@ endif
 nnoremap <silent> K :call <SID>show_documentation()<CR>
   " <c-o> to search symbol in current document
 nnoremap <silent><nowait> <space>o :<C-u>CocList outline<cr>
-  " Do action for next item
-nnoremap <silent><nowait> <space>j :<C-u>CocNext<cr>
-  " Do action for previous item
-nnoremap <silent><nowait> <space>k :<C-u>CocPrev<cr>
+  " Jump to next diagnostic
+nmap <silent> [g <Plug>(coc-diagnostic-next)
+  " Jump to previous diagnostic
+nmap <silent> ]g <Plug>(coc-diagnostic-prev)
   " Call CocAction for current line
 nnoremap <silent><nowait> <space>. :<C-u>CocAction<cr>
 
