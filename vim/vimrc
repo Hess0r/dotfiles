@@ -184,8 +184,12 @@ function! s:show_documentation()
 endfunction
 
 " keymapings
+  " toggle NerdTree
 nnoremap <C-b> :NERDTreeToggle<CR>
+  " fuzzy file search
 nnoremap <C-p> :Files<CR>
+  " fuzzy buffer search
+nnoremap <silent> <Leader>b :Buffers<CR>
 
 autocmd FileType go nmap <leader>r :GoRun
 autocmd FileType json syntax match Comment +\/\/.\+$+
