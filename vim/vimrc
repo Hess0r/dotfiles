@@ -175,6 +175,8 @@ nmap <silent> ]g <Plug>(coc-diagnostic-prev)
 nnoremap <silent><nowait> <space>. :<C-u>CocAction<cr>
   " Search workspace symbols
 nnoremap <silent><nowait> <space>t :<C-u>CocList -I symbols<cr>
+  " Go to definition
+nmap <silent> gd <Plug>(coc-definition)
 
 function! s:show_documentation()
   if (index(['vim', 'help'], &filetype) >= 0)
