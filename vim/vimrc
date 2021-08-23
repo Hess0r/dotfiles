@@ -173,6 +173,8 @@ nmap <silent> [g <Plug>(coc-diagnostic-next)
 nmap <silent> ]g <Plug>(coc-diagnostic-prev)
   " Call CocAction for current line
 nnoremap <silent><nowait> <space>. :<C-u>CocAction<cr>
+  " Search workspace symbols
+nnoremap <silent><nowait> <space>t :<C-u>CocList -I symbols<cr>
 
 function! s:show_documentation()
   if (index(['vim', 'help'], &filetype) >= 0)
