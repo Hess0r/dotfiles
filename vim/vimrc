@@ -117,7 +117,7 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-json', 
       \ 'coc-prettier',
-      \ '@yaegassy/coc-intelephense',
+      \ '@yaegassy/coc-intelephense'
       \ ]
 
   " tab for navigation in command complete window
@@ -191,9 +191,9 @@ endfunction
 
 " keymapings
   " toggle NerdTree
-nnoremap <C-b> :NERDTreeToggle<CR>
+nnoremap <silent><nowait> <space>b :NERDTreeToggle<CR>
   " fuzzy file search
-nnoremap <C-p> :Files<CR>
+nnoremap <silent><nowait> <space>p :Files<CR>
   " fuzzy buffer search
 nnoremap <silent> <Leader>b :Buffers<CR>
 
