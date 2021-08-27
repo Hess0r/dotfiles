@@ -72,3 +72,8 @@ nnoremap <silent><nowait> <leader>p :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 " which key toggle
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+" navigate through buffers
+nnoremap <silent><nowait> <leader>h :bn<CR>
+nnoremap <silent><nowait> <leader>l :bp<CR>
+" close current buffer
+nnoremap <silent><nowait> <leader>w :bd<CR>
