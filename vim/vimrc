@@ -2,8 +2,8 @@ source $HOME/.vim/custom/general.vim
 source $HOME/.vim/custom/plugins.vim
 source $HOME/.vim/custom/coc.vim
 source $HOME/.vim/custom/keymappings.vim
-source $HOME/.vim/custom/colors.vim
 " source $HOME/.vim/custom/lightline.vim
 source $HOME/.vim/custom/airline.vim
+source $HOME/.vim/custom/colors.vim
 source $HOME/.vim/custom/filetypes.vim
 source $HOME/.vim/custom/go.vim

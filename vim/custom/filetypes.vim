@@ -1,5 +1,3 @@
-" enable syntax highlighting
-syntax on
 " enable plugins (if there are any) for the given filetype
 filetype plugin on
 
