@@ -77,3 +77,5 @@ nnoremap <silent><nowait> <leader>h :bn<CR>
 nnoremap <silent><nowait> <leader>l :bp<CR>
 " close current buffer
 nnoremap <silent><nowait> <leader>w :bd<CR>
+" close current buffer
+nnoremap <silent><nowait> <leader>f :Rg<CR>
