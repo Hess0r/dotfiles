@@ -55,6 +55,9 @@ set wildignore+=*/tmp/*
 set wildignore+=*/vendor/
 set wildignore+=*/node_modules/
 
+" show list on command mode completion
+set wildmenu
+
 " function to use when omni complete in insert mode
 set omnifunc=syntaxcomplete#Complete
 
