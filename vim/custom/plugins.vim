@@ -18,4 +18,5 @@ call plug#begin('~/.vimplugins')
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-commentary'
   Plug 'liuchengxu/vim-which-key'
+  Plug 'pantharshit00/vim-prisma'
 call plug#end()
