@@ -11,6 +11,9 @@ set showmode
 " show command under status line
 set showcmd
 
+" highlight search results (use :noh to hide)
+set hlsearch
+
 " spacing settings for <TAB> and autoindents
 set autoindent
 set tabstop=2
