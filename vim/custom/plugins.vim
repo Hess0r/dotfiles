@@ -19,4 +19,5 @@ call plug#begin('~/.vimplugins')
   Plug 'tpope/vim-commentary'
   Plug 'liuchengxu/vim-which-key'
   Plug 'pantharshit00/vim-prisma'
+  Plug 'ekalinin/Dockerfile.vim'
 call plug#end()
