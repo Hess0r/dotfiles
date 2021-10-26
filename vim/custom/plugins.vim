@@ -12,7 +12,7 @@ call plug#begin('~/.vimplugins')
   Plug 'tpope/vim-fugitive'
   Plug 'sonph/onehalf', { 'rtp': 'vim/' }
   Plug 'joshdick/onedark.vim'
-  Plug 'preservim/nerdtree'
+  " Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'

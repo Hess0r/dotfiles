@@ -64,18 +64,29 @@ function! s:show_documentation()
   endif
 endfunction
 
+call which_key#register('<Space>', "g:which_key_map")
+let g:which_key_map = {}
+
 " toggle NerdTree
-nnoremap <silent><nowait> <leader>n :NERDTreeToggle<CR>
+" nnoremap <silent><nowait> <leader>n :NERDTreeToggle<CR>
+" toggle Coc-Explorer
+nnoremap <silent><nowait> <leader>e :CocCommand explorer<CR>
 " fuzzy file search
 nnoremap <silent><nowait> <leader>p :Files<CR>
-" fuzzy buffer search
-nnoremap <silent> <leader>b :Buffers<CR>
+" Buffers
+  let g:which_key_map.b = {
+    \ 'name': '+buffers',
+    \ 'b': 'show buffers',
+    \ 'w': 'close current buffer',
+    \ }
+  " fuzzy buffer search
+  nnoremap <silent> <leader>bb :Buffers<CR>
+  " close current buffer
+  nnoremap <silent><nowait> <leader>bw :bd<CR>
 " which key toggle
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " navigate through buffers
 nnoremap <silent><nowait> <leader>h :bn<CR>
 nnoremap <silent><nowait> <leader>l :bp<CR>
-" close current buffer
-nnoremap <silent><nowait> <leader>w :bd<CR>
 " search in files
 nnoremap <silent><nowait> <leader>f :Rg<CR>
