@@ -9,3 +9,5 @@ export GIT_PS1_SHOWUPSTREAM="auto"
 export PS1='\[${PSGREEN}\]\u:\[${PSBLUE}\]\W\[${PSPURPLE}\]$(__git_ps1 " (%s)")\[${PSUNSET}\]$ '
 
 [ -f "`which starship`" ] && eval "$(starship init bash)"
+
+export STARSHIP_CONFIG=~/.shell.d/starship.toml
