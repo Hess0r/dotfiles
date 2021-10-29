@@ -67,8 +67,6 @@ endfunction
 call which_key#register('<Space>', "g:which_key_map")
 let g:which_key_map = {}
 
-" toggle NerdTree
-" nnoremap <silent><nowait> <leader>n :NERDTreeToggle<CR>
 " toggle Coc-Explorer
 nnoremap <silent><nowait> <leader>e :CocCommand explorer<CR>
 " fuzzy file search

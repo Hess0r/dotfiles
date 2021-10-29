@@ -5,19 +5,16 @@ endif
 
 call plug#begin('~/.vimplugins')
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-  " Plug 'itchyny/lightline.vim'
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
   Plug 'sheerun/vim-polyglot'
   Plug 'tpope/vim-fugitive'
   Plug 'sonph/onehalf', { 'rtp': 'vim/' }
   Plug 'joshdick/onedark.vim'
-  " Plug 'preservim/nerdtree'
   Plug 'neoclide/coc.nvim', { 'branch': 'release' }
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-commentary'
   Plug 'liuchengxu/vim-which-key'
-  Plug 'pantharshit00/vim-prisma'
-  Plug 'ekalinin/Dockerfile.vim'
+  Plug 'jiangmiao/auto-pairs'
 call plug#end()
