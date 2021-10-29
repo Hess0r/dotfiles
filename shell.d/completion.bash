@@ -11,3 +11,7 @@ if type kubectl &>/dev/null; then
 fi
 
 [ -f /usr/share/doc/fzf/examples/completion.bash ] && source /usr/share/doc/fzf/examples/completion.bash
+
+if type skaffold &>/dev/null; then
+  source <(skaffold completion bash)
+fi
