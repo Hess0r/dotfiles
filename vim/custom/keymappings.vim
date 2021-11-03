@@ -65,24 +65,32 @@ function! s:show_documentation()
 endfunction
 
 call which_key#register('<Space>', "g:which_key_map")
+" which key toggle
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 let g:which_key_map = {}
+let g:which_key_map.b = {
+  \ 'name': '+buffers',
+  \ 'b': 'show buffers',
+  \ 'w': 'close current buffer',
+  \ }
+let g:which_key_map.p = 'Search files by name'
+let g:which_key_map.f = 'Search in files'
+let g:which_key_map.h = 'Next buffer'
+let g:which_key_map.l = 'Prev buffer'
+let g:which_key_map.e = 'Toggle file explorer'
+let g:which_key_map.o = 'Search outline'
+let g:which_key_map["."] = 'Quick action'
+let g:which_key_map.t = 'Search workspace symbols'
 
 " toggle Coc-Explorer
 nnoremap <silent><nowait> <leader>e :CocCommand explorer<CR>
 " fuzzy file search
 nnoremap <silent><nowait> <leader>p :Files<CR>
 " Buffers
-  let g:which_key_map.b = {
-    \ 'name': '+buffers',
-    \ 'b': 'show buffers',
-    \ 'w': 'close current buffer',
-    \ }
   " fuzzy buffer search
   nnoremap <silent> <leader>bb :Buffers<CR>
   " close current buffer
   nnoremap <silent><nowait> <leader>bw :bd<CR>
-" which key toggle
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " navigate through buffers
 nnoremap <silent><nowait> <leader>h :bn<CR>
 nnoremap <silent><nowait> <leader>l :bp<CR>
