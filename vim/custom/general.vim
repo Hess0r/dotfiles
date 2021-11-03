@@ -23,6 +23,9 @@ set smartindent
 set smarttab
 set expandtab
 
+" asdf
+set linebreak
+
 " does not change <EOL> on editing
 set nofixendofline
 
