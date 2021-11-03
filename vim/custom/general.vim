@@ -23,7 +23,7 @@ set smartindent
 set smarttab
 set expandtab
 
-" asdf
+" pretty soft wrapping of lines
 set linebreak
 
 " does not change <EOL> on editing
