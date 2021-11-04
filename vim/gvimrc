@@ -1,8 +1,7 @@
 " GUI SETTINGS
 " ===============================================
+set shell=C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 set guifont=Cascadia\ Code\ PL:h10
-
-colorscheme onedark
 
 set guioptions=
 
@@ -62,6 +61,7 @@ set laststatus=2
 " empty t_vb will not show any flash
 set novisualbell
 set noerrorbells
+set bo=all
 
 " coc.nvim
 " set cmdheight=2
@@ -91,106 +91,26 @@ endif
 
 " PLUGINS
 " ===============================================
-if empty(glob('~/vimfiles/autoload/plug.vim'))
-  echo "here"
-  !iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | ni -Force ~/vimfiles/autoload/plug.vim 
-endif
+" if empty(glob('~/vimfiles/autoload/plug.vim'))
+"   !iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | ni -Force ~/vimfiles/autoload/plug.vim 
+" endif
 
-call plug#begin('~/vimfiles/plugins')
-  " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'sheerun/vim-polyglot'
-  Plug 'tpope/vim-fugitive'
-  Plug 'joshdick/onedark.vim'
-  " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-  " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  " Plug 'junegunn/fzf.vim'
-  Plug 'tpope/vim-commentary'
-  Plug 'liuchengxu/vim-which-key'
-  " Plug 'jiangmiao/auto-pairs'
-call plug#end()
-" ===============================================
-
-" COC.NVIM
-" ===============================================
-" let g:coc_global_extensions = [
-"       \ 'coc-tsserver',
-"       \ 'coc-json', 
-"       \ 'coc-yaml', 
-"       \ 'coc-prettier',
-"       \ '@yaegassy/coc-intelephense',
-"       \ 'coc-explorer'
-"       \ ]
+" call plug#begin('~/vimfiles/plugins/')
+"   Plug 'vim-airline/vim-airline'
+"   Plug 'vim-airline/vim-airline-themes'
+"   Plug 'sheerun/vim-polyglot'
+"   Plug 'tpope/vim-fugitive'
+"   Plug 'joshdick/onedark.vim'
+"   Plug 'tpope/vim-commentary'
+"   Plug 'liuchengxu/vim-which-key'
+"   " Plug 'jiangmiao/auto-pairs'
+" call plug#end()
 " ===============================================
 
 " KEYMAPPINGS
 " ===============================================
 " map <leader> to space
 let mapleader = "\<space>"
-
-" tab for navigation in command complete window
-" inoremap <silent><expr> <TAB>
-"   \ pumvisible() ? "\<C-n>" :
-"   \ <SID>check_back_space() ? "\<TAB>" :
-"   \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1] =~# '\s'
-" endfunction
-
-" " <c-space> to trigger completion
-" if has('nvim')
-"   inoremap <silent><expr> <c-space> coc#refresh()
-" else
-"   inoremap <silent><expr> <c-@> coc#refresh()
-" endif
-
-" " <CR> to select
-" inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-"   \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" " <C-f> and <C-b> to scroll floating window
-" if has('nvim-0.4.0') || has('patch-8.2.0750')
-"   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-"   nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-"   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-"   inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-"   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-"   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-" endif
-
-" " :Format to format current buffer
-" command! -nargs=0 Format :call CocAction('format')
-" " :OR to organise imports
-" command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
-
-" K to call show documentation on preview window
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
-" <c-o> to search symbol in current document
-" nnoremap <silent><nowait> <leader>o :<C-u>CocList outline<CR>
-" Jump to next diagnostic
-" nmap <silent> [g <Plug>(coc-diagnostic-next)
-" Jump to previous diagnostic
-" nmap <silent> ]g <Plug>(coc-diagnostic-prev)
-" Call CocAction for current line
-" nnoremap <silent><nowait> <leader>. :<C-u>CocAction<CR>
-" Search workspace symbols
-" nnoremap <silent><nowait> <leader>t :<C-u>CocList -I symbols<CR>
-" Go to definition
-" nmap <silent> gd <Plug>(coc-definition)
-
-" function! s:show_documentation()
-"   if (index(['vim', 'help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   elseif (coc#rpc#ready())
-"     call CocActionAsync('doHover')
-"   else
-"     execute '!' . &keywordprg . " " . expand('<cword>')
-"   endif
-" endfunction
 
 call which_key#register('<Space>', "g:which_key_map")
 " which key toggle
@@ -214,8 +134,6 @@ let g:which_key_map.d = {
   \ 'g': 'edit gvimrc',
   \ }
 
-" toggle Coc-Explorer
-" nnoremap <silent><nowait> <leader>e :CocCommand explorer<CR>
 " fuzzy file search
 nnoremap <silent><nowait> <leader>p :Files<CR>
 " Buffers
@@ -249,8 +167,6 @@ colorscheme onedark
 if has("termguicolors")
   set termguicolors
 endif
-
-hi Normal guibg=NONE ctermbg=NONE
 " ===============================================
 
 " FILETYPES
@@ -259,29 +175,6 @@ hi Normal guibg=NONE ctermbg=NONE
 filetype plugin on
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
-" ===============================================
-
-" GO
-" ===============================================
-" let g:go_fmt_fail_silently = 0
-" let g:go_fmt_command = 'goimports'
-" let g:go_fmt_autosave = 1
-" let g:go_gopls_enabled = 1
-" let g:go_highlight_types = 1
-" let g:go_highlight_fields = 1
-" let g:go_highlight_functions = 1
-" let g:go_highlight_function_calls = 1
-" let g:go_highlight_operators = 1
-" let g:go_highlight_extra_types = 1
-" let g:go_highlight_variable_declarations = 1
-" let g:go_highlight_variable_assignments = 1
-" let g:go_highlight_build_constraints = 1
-" let g:go_highlight_diagnostic_errors = 1
-" let g:go_highlight_diagnostic_warnings = 1
-" let g:go_auto_type_info = 1
-" let g:go_auto_sameids = 0
-
-" autocmd FileType go nmap <leader>r :GoRun
 " ===============================================
 
 " AUTO COMMANDS
