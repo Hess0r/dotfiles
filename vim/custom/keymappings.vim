@@ -92,7 +92,7 @@ nnoremap <silent><nowait> <leader>p :Files<CR>
   " close current buffer
   nnoremap <silent><nowait> <leader>bw :bd<CR>
 " navigate through buffers
-nnoremap <silent><nowait> <leader>h :bn<CR>
-nnoremap <silent><nowait> <leader>l :bp<CR>
+nnoremap <silent><nowait> <leader>l :bn<CR>
+nnoremap <silent><nowait> <leader>h :bp<CR>
 " search in files
 nnoremap <silent><nowait> <leader>f :Rg<CR>
