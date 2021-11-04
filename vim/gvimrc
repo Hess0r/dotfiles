@@ -1,3 +1,23 @@
-set guifont=Cascadia\ Code\ PL
+set guifont=Cascadia\ Code\ PL:h10
 
 colorscheme onedark
+
+set guioptions=
+
+set lines=35
+set columns=150
+
+" KEYMAPPINGS
+" ===============================================
+let g:which_key_map.d = {
+  \ 'name': '+edit dedicated files',
+  \ 'g': 'edit gvimrc',
+  \ }
+" edit gvimrc file
+nnoremap <silent><nowait> <leader>dg :tabedit $MYGVIMRC<CR>
+" ===============================================
+
+" AUTO COMMANDS
+" ===============================================
+autocmd bufwritepost *gvimrc source $MYGVIMRC
+" ===============================================

@@ -48,8 +48,7 @@ set laststatus=2
 " use visaul bell instead of beeping
 " the t_vb sets the flash timing and coldrs
 " empty t_vb will not show any flash
-set visualbell
-set t_vb=
+set novisualbell
 
 " coc.nvim
 set cmdheight=2
@@ -88,14 +87,14 @@ call plug#begin('~/vimfiles/plugins')
   " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  " Plug 'sheerun/vim-polyglot'
-  " Plug 'tpope/vim-fugitive'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'tpope/vim-fugitive'
   Plug 'joshdick/onedark.vim'
   " Plug 'neoclide/coc.nvim', { 'branch': 'release' }
   " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   " Plug 'junegunn/fzf.vim'
-  " Plug 'tpope/vim-commentary'
-  " Plug 'liuchengxu/vim-which-key'
+  Plug 'tpope/vim-commentary'
+  Plug 'liuchengxu/vim-which-key'
   " Plug 'jiangmiao/auto-pairs'
 call plug#end()
 " ===============================================
@@ -232,7 +231,7 @@ if has("termguicolors")
   set termguicolors
 endif
 
-hi Normal guibg=NONE ctermbg=NONE
+" hi Normal guibg=NONE ctermbg=NONE
 " ===============================================
 
 " FILETYPES
