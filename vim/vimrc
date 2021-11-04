@@ -275,5 +275,5 @@ autocmd FileType go nmap <leader>r :GoRun
 
 " AUTO COMMANDS
 " ===============================================
-autocmd bufwritepost *vimrc source $MYVIMRC
+autocmd bufwritepost vimrc,.vimrc source $MYVIMRC
 " ===============================================
