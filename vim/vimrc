@@ -198,6 +198,10 @@ let g:which_key_map.e = 'Toggle file explorer'
 let g:which_key_map.o = 'Search outline'
 let g:which_key_map["."] = 'Quick action'
 let g:which_key_map.t = 'Search workspace symbols'
+let g:which_key_map.d = {
+  \ 'name': '+edit dedicated files',
+  \ 'v': 'edit vimrc',
+  \ }
 
 " toggle Coc-Explorer
 nnoremap <silent><nowait> <leader>e :CocCommand explorer<CR>
@@ -213,6 +217,8 @@ nnoremap <silent><nowait> <leader>l :bn<CR>
 nnoremap <silent><nowait> <leader>h :bp<CR>
 " search in files
 nnoremap <silent><nowait> <leader>f :Rg<CR>
+" edit vimrc file
+nnoremap <silent><nowait> <leader>dv :tabedit $MYVIMRC<CR>
 " ===============================================
 
 " AIRLINE
@@ -265,4 +271,9 @@ let g:go_auto_type_info = 1
 let g:go_auto_sameids = 0
 
 autocmd FileType go nmap <leader>r :GoRun
+" ===============================================
+
+" AUTO COMMANDS
+" ===============================================
+autocmd bufwritepost *vimrc source $MYVIMRC
 " ===============================================
