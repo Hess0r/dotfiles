@@ -3,6 +3,11 @@
 let skip_defaults_vim=1
 set nocompatible
 
+" cursor styles
+let &t_SI.="\e[5 q"
+let &t_SR.="\e[4 q"
+let &t_EI.="\e[1 q"
+
 " show line numbers
 set number
 " col and row info on bottom right
@@ -14,7 +19,7 @@ set showmode
 set showcmd
 
 " highlight search results (use :noh to hide)
-set hlsearch
+set nohlsearch
 
 " spacing settings for <TAB> and autoindents
 set autoindent
