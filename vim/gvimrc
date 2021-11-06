@@ -9,172 +9,18 @@ set lines=35
 set columns=150
 " ===============================================
 
-" GENERAL
-" ================================================
-let skip_defaults_vim=1
-set nocompatible
-
-" show line numbers
-set number
-" col and row info on bottom right
-set ruler
-
-" show command insert mode
-set showmode
-" show command under status line
-set showcmd
-
-" highlight search results (use :noh to hide)
-set hlsearch
-
-" spacing settings for <TAB> and autoindents
-set autoindent
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set smartindent
-set smarttab
-set expandtab
-
-" pretty soft wrapping of lines
-set linebreak
-
-" does not change <EOL> on editing
-set nofixendofline
-
-" sets line numberong to fixed, instead of relative to current line
-set norelativenumber
-
-" no backup and swap files are created when editing or writing
-set nobackup
-set noswapfile
-set nowritebackup
-
-" set window icont text to the name of open file
-set icon
-
-" always show status line (even on last window)
-set laststatus=2
-
-" use visaul bell instead of beeping
-" the t_vb sets the flash timing and coldrs
-" empty t_vb will not show any flash
-set novisualbell
-set noerrorbells
-set bo=all
-
-" coc.nvim
-" set cmdheight=2
-" set hidden
-" set updatetime=300
-" set shortmess+=c
-" coc.nvim end
-
-" Ignoring files from fzf
-set wildignore+=*/tmp/*
-set wildignore+=*/vendor/
-set wildignore+=*/node_modules/
-
-" show list on command mode completion
-set wildmenu
-
-" function to use when omni complete in insert mode
-set omnifunc=syntaxcomplete#Complete
-
-" set the signs to be displayed in number row
-if has("nvim-0.5.0") || has("patch-8.1.1564")
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
-" ===============================================
-
-" PLUGINS
-" ===============================================
-" if empty(glob('~/vimfiles/autoload/plug.vim'))
-"   !iwr -useb https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim | ni -Force ~/vimfiles/autoload/plug.vim 
-" endif
-
-" call plug#begin('~/vimfiles/plugins/')
-"   Plug 'vim-airline/vim-airline'
-"   Plug 'vim-airline/vim-airline-themes'
-"   Plug 'sheerun/vim-polyglot'
-"   Plug 'tpope/vim-fugitive'
-"   Plug 'joshdick/onedark.vim'
-"   Plug 'tpope/vim-commentary'
-"   Plug 'liuchengxu/vim-which-key'
-"   " Plug 'jiangmiao/auto-pairs'
-" call plug#end()
-" ===============================================
-
-" KEYMAPPINGS
-" ===============================================
-" map <leader> to space
-let mapleader = "\<space>"
-
-call which_key#register('<Space>', "g:which_key_map")
-" which key toggle
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-let g:which_key_map = {}
-let g:which_key_map.b = {
-  \ 'name': '+buffers',
-  \ 'b': 'show buffers',
-  \ 'w': 'close current buffer',
-  \ }
-let g:which_key_map.p = 'Search files by name'
-let g:which_key_map.f = 'Search in files'
-let g:which_key_map.h = 'Next buffer'
-let g:which_key_map.l = 'Prev buffer'
-let g:which_key_map.e = 'Toggle file explorer'
-let g:which_key_map.o = 'Search outline'
-let g:which_key_map["."] = 'Quick action'
-let g:which_key_map.t = 'Search workspace symbols'
 let g:which_key_map.d = {
   \ 'name': '+edit dedicated files',
   \ 'g': 'edit gvimrc',
   \ }
 
-" fuzzy file search
-nnoremap <silent><nowait> <leader>p :Files<CR>
-" Buffers
-  " fuzzy buffer search
-  nnoremap <silent> <leader>bb :Buffers<CR>
-  " close current buffer
-  nnoremap <silent><nowait> <leader>bw :bd<CR>
-" navigate through buffers
-nnoremap <silent><nowait> <leader>l :bn<CR>
-nnoremap <silent><nowait> <leader>h :bp<CR>
-" search in files
-nnoremap <silent><nowait> <leader>f :Rg<CR>
 " edit gvimrc file
 nnoremap <silent><nowait> <leader>dg :tabedit $MYGVIMRC<CR>
 " ===============================================
 
-" AIRLINE
-" ===============================================
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'onedark'
-" ===============================================
-
 " COLORS
 " ===============================================
-" enable syntax highlighting
-syntax on
-
-" colorscheme pablo
 colorscheme onedark
-
-if has("termguicolors")
-  set termguicolors
-endif
-" ===============================================
-
-" FILETYPES
-" ===============================================
-" enable plugins (if there are any) for the given filetype
-filetype plugin on
-
-autocmd FileType json syntax match Comment +\/\/.\+$+
 " ===============================================
 
 " AUTO COMMANDS
