@@ -1,7 +1,7 @@
 #!/bin/bash
 # git checkout `git branch | fzf | tr -d "[:space:]"`
 
-branch=`git branch | fzf | tr -d "*"`
+branch=`git branch | fzf --layout=reverse --height=10% --preview-window=right:hidden | tr -d "*"`
 
 if [[ -z $branch ]]; then
     exit 0
