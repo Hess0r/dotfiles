@@ -19,7 +19,7 @@ set showmode
 set showcmd
 
 " highlight search results (use :noh to hide)
-set nohlsearch
+set hlsearch
 
 " spacing settings for <TAB> and autoindents
 set autoindent
