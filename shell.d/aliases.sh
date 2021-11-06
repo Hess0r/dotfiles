@@ -47,6 +47,3 @@ alias glog="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset%s%Cgreen
 alias glogs="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s%Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
 alias glogds="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s%Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
 alias gloga="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s%Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
-
-# my scripts
-alias fco="$HOME/.shell.d/bin/fzf-checkout.sh"
