@@ -47,6 +47,7 @@ source "$HOME/.shell.d/completion.bash"
 source "$HOME/.shell.d/direnv.bash"
 source "$HOME/.shell.d/fzf.sh"
 source "$HOME/.shell.d/nvm.sh"
+source "$HOME/.shell.d/cheatsheet.sh"
 [ -f "$HOME/.secrets/keys.sh" ] && source "$HOME/.secrets/keys.sh"
 
 
