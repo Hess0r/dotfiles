@@ -13,3 +13,11 @@ fco() {
 fdiff() {
     git diff $@ --name-only | fzf -m --ansi --preview 'git diff $@ --color=always -- {-1}'
 }
+
+fmux() {
+    session=`tmux ls | fzf --layout=reverse --height=10% --preview-window=right:hidden --info=inline | sed 's/:.*//'`
+    if [[ -z $session ]]; then
+        return 0
+    fi
+    tmux a -t $session
+}

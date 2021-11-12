@@ -8,5 +8,4 @@ ln -sf "$PWD/inputrc" "$HOME/.inputrc"
 [ -d "$PWD/secrets" ] && ln -sf "$PWD/secrets" "$HOME/.secrets"
 
 mkdir -p "$HOME/.vim"
-ln -sf "$PWD/vim/config/coc-settings.json" "$HOME/.vim/coc-settings.json"
-ln -sf "$PWD/vim/custom" "$HOME/.vim/custom"
+ln -sf "$PWD/vim/coc-settings.json" "$HOME/.vim/coc-settings.json"
