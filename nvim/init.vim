@@ -66,7 +66,17 @@ autocmd bufwritepost init.vim source $MYVIMRC
 " COC.NVIM
 " =================
 let g:coc_global_extensions = [
-  \ 'coc-fzf-preview'
+  \ 'coc-fzf-preview',
+  \ 'coc-tsserver',
+  \ 'coc-json',
+  \ 'coc-yaml',
+  \ 'coc-prettier',
+  \ 'coc-explorer',
+  \ '@yaegassy/coc-intelephense',
+  \ 'coc-markdownlint',
+  \ 'coc-eslint',
+  \ 'coc-css',
+  \ 'coc-sh',
   \ ]
 " =================
 
