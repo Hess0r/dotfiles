@@ -44,6 +44,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'joshdick/onedark.vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " COLORS
