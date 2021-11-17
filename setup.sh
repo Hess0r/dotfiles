@@ -9,3 +9,4 @@ ln -sf "$PWD/inputrc" "$HOME/.inputrc"
 
 mkdir -p "$HOME/.vim"
 ln -sf "$PWD/vim/coc-settings.json" "$HOME/.vim/coc-settings.json"
+ln -sf "$PWD/nvim" "$HOME/.config/nvim"
