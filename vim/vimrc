@@ -176,6 +176,8 @@ nnoremap <silent><nowait> <leader>. :<C-u>CocAction<CR>
 nnoremap <silent><nowait> <leader>t :<C-u>CocList -I symbols<CR>
 " Go to definition
 nmap <silent> gd <Plug>(coc-definition)
+" Go to definition
+nmap <silent><leader>r <Plug>(coc-rename)
 
 " Mapping for unimpaired line down and up
 nmap <C-j> ]e
@@ -281,8 +283,9 @@ let g:go_highlight_diagnostic_errors = 1
 let g:go_highlight_diagnostic_warnings = 1
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 0
+let g:go_def_mapping_enabled = 0
 
-autocmd FileType go nmap <leader>r :GoRun
+" autocmd FileType go nmap <leader>r :GoRun
 " ===============================================
 
 " AUTO COMMANDS
