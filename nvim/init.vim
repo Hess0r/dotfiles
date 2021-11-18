@@ -45,10 +45,12 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-fugitive'
-  Plug 'sheerun/vim-polyglot'
+  " Plug 'sheerun/vim-polyglot'
   Plug 'neovim/nvim-lspconfig'
   Plug 'liuchengxu/vim-which-key'
   Plug 'tpope/vim-commentary'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  " Plug 'glepnir/lspsaga.nvim'
 call plug#end()
 
 " COLORS
@@ -92,6 +94,42 @@ nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
 "   \ 'marker':  ['fg', 'Keyword'],
 "   \ 'spinner': ['fg', 'Label'],
 "   \ 'header':  ['fg', 'Comment'] }
+" =================
+
+" TREE-SITTER
+" =================
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  ensure_installed = {
+    "tsx",
+    "php",
+    "json",
+    "yaml",
+    "html",
+    "scss",
+    "bash",
+    "css",
+    "dockerfile",
+    "go",
+    "javascript",
+    "jsdoc",
+    "toml",
+    "vim",
+    "lua",
+  },
+}
+EOF
+" =================
+
+" LSPSAGA
+" =================
+" lua << EOF
+" require'lspsaga'.init_lsp_saga()
+" EOF
 " =================
 
 " LSP
