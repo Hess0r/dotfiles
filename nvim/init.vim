@@ -47,6 +47,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'sheerun/vim-polyglot'
   Plug 'neovim/nvim-lspconfig'
+  Plug 'liuchengxu/vim-which-key'
 call plug#end()
 
 " COLORS
@@ -69,6 +70,8 @@ autocmd bufwritepost init.vim source $MYVIMRC
 " =================
 let mapleader="\<space>"
 
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
 " =================
 
 " LSP
@@ -111,7 +114,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'tsserver', 'bashls' }
+local servers = { 'tsserver', 'bashls', 'dockerls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
