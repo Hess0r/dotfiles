@@ -1,4 +1,7 @@
-export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --bind alt-j:preview-down,alt-k:preview-up --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' "
+FZF_DEFAULT_OPTS+="--bind alt-j:preview-down,alt-k:preview-up "
+FZF_DEFAULT_OPTS+="--preview '([[ -f {} ]] && (bat --color=always --style=header,grid --line-range :300 {})) || ([[ -d {} ]] && (tree -C {} | less)) || echo {} 2>/dev/null | head -200'"
+export FZF_DEFAULT_OPTS
 # export FZF_DEFAULT_COMMAND="fd --type f"
 export FZF_DEFAULT_COMMAND="rg --files"
 
