@@ -40,7 +40,6 @@ fi
 source "$HOME/.shell.d/editor.sh"
 source "$HOME/.shell.d/golang.sh"
 source "$HOME/.shell.d/path.sh"
-source "$HOME/.shell.d/git-prompt.sh"
 source "$HOME/.shell.d/prompt.sh"
 source "$HOME/.shell.d/aliases.sh"
 source "$HOME/.shell.d/completion.bash"
@@ -48,6 +47,7 @@ source "$HOME/.shell.d/direnv.bash"
 source "$HOME/.shell.d/fzf.sh"
 source "$HOME/.shell.d/nvm.sh"
 source "$HOME/.shell.d/cheatsheet.sh"
-[ -f "$HOME/.secrets/keys.sh" ] && source "$HOME/.secrets/keys.sh"
-
+if [[ -f "$HOME/.secrets/keys.sh" ]]; then 
+  source "$HOME/.secrets/keys.sh"
+fi
 
