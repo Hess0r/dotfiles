@@ -235,6 +235,11 @@ end
             fileMatch = { 'package.json' },
             url = 'https://json.schemastore.org/package.json',
           },
+          {
+            name = 'tsconfig.json',
+            fileMatch = { 'tsconfig.json' },
+            url = 'https://json.schemastore.org/tsconfig.json',
+          },
         }
       }
     }
