@@ -53,12 +53,22 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'hrsh7th/cmp-buffer'
   Plug 'L3MON4D3/LuaSnip'
   Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " COLORS
 " =================
 syntax on
 colorscheme onedark
+" =================
+
+" ICONS
+" =================
+lua <<EOF
+  require'nvim-web-devicons'.setup{}
+EOF
 " =================
 
 " FILETYPES
@@ -76,6 +86,10 @@ autocmd bufwritepost init.vim source $MYVIMRC
 let mapleader="\<space>"
 
 nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
+nnoremap <leader>p <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " =================
 
 " AUTOCOMPLETE
