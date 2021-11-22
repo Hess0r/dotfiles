@@ -51,3 +51,6 @@ if [[ -f "$HOME/.secrets/keys.sh" ]]; then
   source "$HOME/.secrets/keys.sh"
 fi
 
+# Change this to the folder, where dotfiles were cloned
+export DOTFILES="$HOME/dotfiles"
+
