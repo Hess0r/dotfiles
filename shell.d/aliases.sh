@@ -12,24 +12,49 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# docker-compose aliases
-alias dco='docker-compose'
-alias dcb='docker-compose build'
-alias dce='docker-compose exec'
-alias dcps='docker-compose ps'
-alias dcrestart='docker-compose restart'
-alias dcrm='docker-compose rm'
-alias dcr='docker-compose run'
-alias dcstop='docker-compose stop'
-alias dcup='docker-compose up'
-alias dcupb='docker-compose up --build'
-alias dcupd='docker-compose up -d'
-alias dcdn='docker-compose down'
-alias dcl='docker-compose logs'
-alias dclf='docker-compose logs -f'
-alias dcpull='docker-compose pull'
-alias dcstart='docker-compose start'
-alias dck='docker-compose kill'
+# docker compose aliases
+dcv1='docker-compose'
+dcv2='docker compose'
+dcExe='docker compose'
+alias dco="$dcExe"
+alias dcb="$dcExe build"
+alias dce="$dcExe exec"
+alias dcps="$dcExe ps"
+alias dcrestart="$dcExe restart"
+alias dcrm="$dcExe rm"
+alias dcr="$dcExe run"
+alias dcstop="$dcExe stop"
+alias dcup="$dcExe up"
+alias dcupb="$dcExe up --build"
+alias dcupd="$dcExe up -d"
+alias dcdn="$dcExe down"
+alias dcl="$dcExe logs"
+alias dclf="$dcExe logs -f"
+alias dcpull="$dcExe pull"
+alias dcstart="$dcExe start"
+alias dck="$dcExe kill"
+
+chdc() {
+  [[ "$dcExe" == "$dcv1" ]] && dcExe=$dcv2 || dcExe=$dcv1
+
+  alias dco="$dcExe"
+  alias dcb="$dcExe build"
+  alias dce="$dcExe exec"
+  alias dcps="$dcExe ps"
+  alias dcrestart="$dcExe restart"
+  alias dcrm="$dcExe rm"
+  alias dcr="$dcExe run"
+  alias dcstop="$dcExe stop"
+  alias dcup="$dcExe up"
+  alias dcupb="$dcExe up --build"
+  alias dcupd="$dcExe up -d"
+  alias dcdn="$dcExe down"
+  alias dcl="$dcExe logs"
+  alias dclf="$dcExe logs -f"
+  alias dcpull="$dcExe pull"
+  alias dcstart="$dcExe start"
+  alias dck="$dcExe kill"
+}
 
 # alias for Laravel Sail binary
 alias sail='./vendor/bin/sail'
