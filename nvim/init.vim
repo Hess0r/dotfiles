@@ -28,6 +28,8 @@ set wildignore+=*/tmp/*
 set wildignore+=*/vendor/*
 set wildignore+=*/node_modules/*
 set wildmenu
+set list
+set listchars=tab:»\ ,eol:↲
 " set linebreak
 " =================
 
