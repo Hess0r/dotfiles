@@ -12,6 +12,11 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# vim to nvim
+if type nvim &>/dev/null; then
+  alias vim='nvim'
+fi
+
 # docker compose aliases
 dcv1='docker-compose'
 dcv2='docker compose'
