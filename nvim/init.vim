@@ -58,6 +58,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
+  Plug 'b0o/schemastore.nvim'
+  Plug 'onsails/lspkind-nvim'
 call plug#end()
 
 " COLORS
@@ -100,6 +102,7 @@ set completeopt=menu,menuone,noselect
 lua <<EOF
   -- Setup nvim-cmp.
   local cmp = require'cmp'
+  local lspkind = require'lspkind'
 
   cmp.setup({
     snippet = {
@@ -125,7 +128,10 @@ lua <<EOF
       { name = 'luasnip' },
     }, {
       { name = 'buffer' },
-    })
+    }),
+    formatting = {
+      format = lspkind.cmp_format({with_text = true, maxwidth = 50})
+    }
   })
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
@@ -229,19 +235,8 @@ end
     capabilities = capabilities,
     settings = {
       json = {
-        schemas = {
-          {
-            name = 'package.json',
-            fileMatch = { 'package.json' },
-            url = 'https://json.schemastore.org/package.json',
-          },
-          {
-            name = 'tsconfig.json',
-            fileMatch = { 'tsconfig.json' },
-            url = 'https://json.schemastore.org/tsconfig.json',
-          },
-        }
-      }
+        schemas = require('schemastore').json.schemas(),
+      },
     }
   }
 EOF
