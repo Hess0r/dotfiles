@@ -89,7 +89,7 @@ autocmd bufwritepost init.vim source $MYVIMRC
 " =================
 let mapleader="\<space>"
 
-" nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
+nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
 " nnoremap <leader>p <cmd>Telescope find_files<cr>
 " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 " nnoremap <leader>fb <cmd>Telescope buffers<cr>
