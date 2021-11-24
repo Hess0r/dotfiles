@@ -66,7 +66,7 @@ chdc() {
 alias sail='./vendor/bin/sail'
 
 # directory shortcuts
-alias dotfiles='cd ~/dotfiles'
+alias dotfiles="cd $DOTFILES"
 
 # git aliases
 alias ga='git add'
