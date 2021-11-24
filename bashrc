@@ -37,6 +37,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Change this to the folder, where dotfiles were cloned
+export DOTFILES="$HOME/dotfiles"
+
 source "$HOME/.shell.d/editor.sh"
 source "$HOME/.shell.d/golang.sh"
 source "$HOME/.shell.d/path.sh"
@@ -50,7 +53,4 @@ source "$HOME/.shell.d/cheatsheet.sh"
 if [[ -f "$HOME/.secrets/keys.sh" ]]; then 
   source "$HOME/.secrets/keys.sh"
 fi
-
-# Change this to the folder, where dotfiles were cloned
-export DOTFILES="$HOME/dotfiles"
 
