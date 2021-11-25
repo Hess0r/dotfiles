@@ -4,7 +4,7 @@ set number
 " set ruler
 set showmode
 set showcmd
-set hlsearch
+set nohlsearch
 set nobackup
 set noswapfile
 set nowritebackup
@@ -60,6 +60,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'b0o/schemastore.nvim'
   Plug 'onsails/lspkind-nvim'
+  Plug 'sbdchd/neoformat'
 call plug#end()
 
 " COLORS
@@ -90,7 +91,7 @@ filetype plugin on
 let mapleader="\<space>"
 
 nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
-nnoremap <silent> <leader>rr :source $MYVIMRC<CR>
+nnoremap <silent> <leader><CR> :source $MYVIMRC<CR>
 " nnoremap <leader>p <cmd>Telescope find_files<cr>
 " nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 " nnoremap <leader>fb <cmd>Telescope buffers<cr>
@@ -103,7 +104,9 @@ lua <<EOF
   vim.api.nvim_set_keymap('n', '<leader>st', [[<cmd>lua require('telescope.builtin').tags()<CR>]], { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<leader>sd', [[<cmd>lua require('telescope.builtin').grep_string()<CR>]], { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<leader>sp', [[<cmd>lua require('telescope.builtin').live_grep()<CR>]], { noremap = true, silent = true })
-  vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
+  -- vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').tags{ only_current_buffer = true }<CR>]], { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('n', '<leader>sm', [[<cmd>lua require('telescope.builtin').marks()<CR>]], { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
 EOF
 " =================
@@ -114,12 +117,13 @@ set completeopt=menu,menuone,noselect
 lua <<EOF
   -- Setup nvim-cmp.
   local cmp = require'cmp'
-    local lspkind = require'lspkind'
+  local lspkind = require'lspkind'
+  local luasnip = require'luasnip'
 
     cmp.setup({
     snippet = {
       expand = function(args)
-        require('luasnip').lsp_expand(args.body)
+        luasnip.lsp_expand(args.body)
       end,
     },
     mapping = {
@@ -241,6 +245,7 @@ require'nvim-treesitter.configs'.setup {
     "javascript",
     "jsdoc",
     "toml",
+    "typescript",
     "vim",
     "lua",
   },
