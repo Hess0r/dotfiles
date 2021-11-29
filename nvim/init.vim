@@ -61,6 +61,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'b0o/schemastore.nvim'
   Plug 'onsails/lspkind-nvim'
   Plug 'sbdchd/neoformat'
+  Plug 'rafamadriz/friendly-snippets'
 call plug#end()
 
 " COLORS
