@@ -182,6 +182,16 @@ fmux() {
     tmux a -t $session
 }
 
+# source own shell functions in .sh files from shell.d dir
+if [[ -d "$HOME/.shell.d" ]]; then
+  for f in "$HOME/.shell.d/*.sh"
+  do
+    source $f
+  done
+fi
+# ==========================================================
+
+
 if [[ -f "$HOME/.secrets/keys.sh" ]]; then 
   source "$HOME/.secrets/keys.sh"
 fi

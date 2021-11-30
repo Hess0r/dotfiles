@@ -1,7 +1,10 @@
-#!/bin/bash
+# commands, and programs
+options=("tmux" "git" "vim" "sed" "grep" "find" "man" "awk" "tr" "xargs" "less" "tail" "tar" "rm" "cp" "rename" "jq" "cat" "bat" "docker" "docker-compose" "chmod" "chown" "make" "ssh" "more" "tldr")
+# programming languages
+options+=("golang" "javascript" "typescript" "bash" "php" "css" "html" "nodejs")
 
 ch() {
-    selected=`cat ~/.shell.d/cheatsheet-commands ~/.shell.d/cheatsheet-languages | fzf --layout=reverse --height=10% --preview-window=right:hidden --info=inline`
+   selected=`printf "%s\n" "${options[@]}" | fzf --layout=reverse --height=10% --preview-window=right:hidden --info=inline`
     if [[ -z $selected ]]; then
         return
     fi

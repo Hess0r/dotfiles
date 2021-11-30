@@ -1,6 +1,0 @@
-; Add this to main gitconfig file to include these directives
-; [include]
-;   path = ~/.shell.d/gitconfig
-[alias]
-  co = checkout
-  s = status
