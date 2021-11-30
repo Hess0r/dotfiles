@@ -43,7 +43,7 @@ export DOTFILES="$HOME/dotfiles"
 if type nvim &>/dev/null; then
   export EDITOR=nvim
   export VISUAL=nvim
-else 
+else
   export EDITOR=vim
   export VISUAL=vim
 fi
@@ -192,7 +192,7 @@ fi
 # ==========================================================
 
 
-if [[ -f "$HOME/.secrets/keys.sh" ]]; then 
+if [[ -f "$HOME/.secrets/keys.sh" ]]; then
   source "$HOME/.secrets/keys.sh"
 fi
 
