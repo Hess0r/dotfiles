@@ -93,10 +93,6 @@ let mapleader="\<space>"
 
 nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
 nnoremap <silent> <leader><CR> :source $MYVIMRC<CR>
-" nnoremap <leader>p <cmd>Telescope find_files<cr>
-" nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-" nnoremap <leader>fb <cmd>Telescope buffers<cr>
-" nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 lua <<EOF
   vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<leader>sf', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], { noremap = true, silent = true })
@@ -109,6 +105,7 @@ lua <<EOF
   vim.api.nvim_set_keymap('n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<leader>sm', [[<cmd>lua require('telescope.builtin').marks()<CR>]], { noremap = true, silent = true })
   vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], { noremap = true, silent = true })
+  vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>Neoformat<CR>]], { noremap = true, silent = true })
 EOF
 " =================
 
@@ -288,7 +285,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 end
 
