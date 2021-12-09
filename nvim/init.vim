@@ -18,7 +18,7 @@ set expandtab
 set guicursor=
 set incsearch
 set termguicolors
-set scrolloff=8
+set scrolloff=20
 set signcolumn=auto
 set cmdheight=1
 set hidden
