@@ -1,10 +1,5 @@
 #!/bin/sh
 
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-sudo apt-add-repository https://cli.github.com/packages
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo add-apt-repository ppa:ondrej/php
-
 sudo apt update
 sudo apt install \
   bat \
@@ -16,8 +11,16 @@ sudo apt install \
   ripgrep \
   tree \
   software-properties-common \
+  neovim
+
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+sudo add-apt-repository ppa:neovim-ppa/stable
+
+sudo apt update
+sudo apt install \
   gh \
-  neovim \
+  neovim
 
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
