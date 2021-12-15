@@ -248,6 +248,7 @@ require'nvim-treesitter.configs'.setup {
     "typescript",
     "vim",
     "lua",
+    "java",
   },
 }
 EOF
@@ -320,4 +321,11 @@ end
   }
 EOF
 
+" =================
+
+" SNIPPETS
+" =================
+lua << EOF
+  require("luasnip/loaders/from_vscode").lazy_load()
+EOF
 " =================
