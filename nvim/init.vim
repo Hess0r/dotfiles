@@ -62,12 +62,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'onsails/lspkind-nvim'
   Plug 'sbdchd/neoformat'
   Plug 'rafamadriz/friendly-snippets'
+  Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " COLORS
 " =================
 syntax on
 colorscheme onedark
+let g:airline_theme='onedark'
 " =================
 
 " ICONS
