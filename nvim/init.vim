@@ -63,6 +63,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'sbdchd/neoformat'
   Plug 'rafamadriz/friendly-snippets'
   Plug 'airblade/vim-gitgutter'
+  Plug 'OmniSharp/omnisharp-vim'
 call plug#end()
 
 " COLORS
@@ -251,6 +252,7 @@ require'nvim-treesitter.configs'.setup {
     "vim",
     "lua",
     "java",
+    "c_sharp",
   },
 }
 EOF
@@ -275,9 +277,9 @@ local on_attach = function(client, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', 'gd', '<cmd>lua require("telescope.builtin").lsp_definitions()<CR>', opts)
   buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', 'gi', '<cmd>lua require("telescope.builtin").lsp_implementations()<CR>', opts)
   buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
@@ -320,6 +322,13 @@ end
         schemas = require('schemastore').json.schemas(),
       },
     }
+  }
+
+  local pid = vim.fn.getpid()
+  nvim_lsp.omnisharp.setup {
+    on_attach = on_attach,
+    cmd = { vim.env.HOME .. "/.cache/omnisharp-vim/omnisharp-roslyn/run", "--languageserver", "--hostPID", tostring(pid) };
+    capabilities = capabilities
   }
 EOF
 
