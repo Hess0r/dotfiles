@@ -64,6 +64,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'rafamadriz/friendly-snippets'
   Plug 'airblade/vim-gitgutter'
   Plug 'OmniSharp/omnisharp-vim'
+  Plug 'liuchengxu/vim-which-key'
 call plug#end()
 
 " COLORS
@@ -97,6 +98,9 @@ let mapleader="\<space>"
 
 nnoremap <silent> <leader>ve :e $MYVIMRC<CR>
 nnoremap <silent> <leader><CR> :source $MYVIMRC<CR>
+nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+
 lua <<EOF
   local opts = { noremap = true, silent = true }
   vim.api.nvim_set_keymap('n', '<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], opts)
@@ -189,6 +193,10 @@ require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
   },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
   incremental_selection = {
     enable = true,
     keymaps = {
@@ -199,7 +207,8 @@ require'nvim-treesitter.configs'.setup {
     },
   },
   indent = {
-    enable = false,
+    enable = true,
+    disable = { "yaml" },
   },
   textobjects = {
     select = {
@@ -234,26 +243,7 @@ require'nvim-treesitter.configs'.setup {
       },
     },
   },
-  ensure_installed = {
-    "tsx",
-    "php",
-    "json",
-    "yaml",
-    "html",
-    "scss",
-    "bash",
-    "css",
-    "dockerfile",
-    "go",
-    "javascript",
-    "jsdoc",
-    "toml",
-    "typescript",
-    "vim",
-    "lua",
-    "java",
-    "c_sharp",
-  },
+  ensure_installed = "maintained",
 }
 EOF
 " =================
@@ -339,4 +329,37 @@ EOF
 lua << EOF
   require("luasnip/loaders/from_vscode").lazy_load()
 EOF
+" =================
+
+" WHICHKEY
+" =================
+let g:which_key_map = {}
+
+highlight default link WhichKey          Operator
+highlight default link WhichKeySeperator DiffAdded
+highlight default link WhichKeyGroup     Identifier
+highlight default link WhichKeyDesc      Function
+
+autocmd! FileType which_key
+autocmd  FileType which_key set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+
+let g:which_key_map.s = {
+      \ 'name' : '+search',
+      \ 'b' : 'cur buf fuzzy find',
+      \ 'd' : 'grep string',
+      \ 'f' : 'find files',
+      \ 'h' : 'help tags',
+      \ 'm' : 'marks',
+      \ 'o' : 'document symbols',
+      \ 'p' : 'live grep',
+      \ 't' : 'tags',
+      \ }
+
+let g:which_key_map.v = {
+      \ 'name' : '+config',
+      \ 'e' : 'edit vimrc',
+      \ }
+
+call which_key#register('<Space>', "g:which_key_map")
 " =================
