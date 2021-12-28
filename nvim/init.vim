@@ -361,5 +361,20 @@ let g:which_key_map.v = {
       \ 'e' : 'edit vimrc',
       \ }
 
+let g:which_key_map.r = {
+      \ 'name' : '+rename',
+      \ 'n' : 'rename',
+      \ }
+
+let g:which_key_map.c = {
+      \ 'name' : '+code_action',
+      \ 'a' : 'code action',
+      \ }
+
+let g:which_key_map['e'] = "show line diagnostic"
+let g:which_key_map['q'] = "set location list for diagnostics"
+let g:which_key_map['f'] = "format"
+let g:which_key_map['D'] = "jump to type definition"
+
 call which_key#register('<Space>', "g:which_key_map")
 " =================
