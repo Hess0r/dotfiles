@@ -115,6 +115,10 @@ lua <<EOF
   vim.api.nvim_set_keymap('n', '<leader>sm', [[<cmd>lua require('telescope.builtin').marks()<CR>]], opts)
   vim.api.nvim_set_keymap('n', '<leader>?', [[<cmd>lua require('telescope.builtin').oldfiles()<CR>]], opts)
   vim.api.nvim_set_keymap('n', '<leader>f', [[<cmd>Neoformat<CR>]], opts)
+  vim.api.nvim_set_keymap('n', '<leader>gs', [[<cmd>lua require('telescope.builtin').git_status()<CR>]], opts)
+  vim.api.nvim_set_keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin').git_commits()<CR>]], opts)
+  vim.api.nvim_set_keymap('n', '<leader>gd', [[<cmd>lua require('telescope.builtin').git_bcommits()<CR>]], opts)
+  vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], opts)
 EOF
 " =================
 
@@ -369,6 +373,14 @@ let g:which_key_map.r = {
 let g:which_key_map.c = {
       \ 'name' : '+code_action',
       \ 'a' : 'code action',
+      \ }
+
+let g:which_key_map.g = {
+      \ 'name' : '+git',
+      \ 'c' : 'commits',
+      \ 'd' : 'buffer history',
+      \ 's' : 'status',
+      \ 'b' : 'branches',
       \ }
 
 let g:which_key_map['e'] = "show line diagnostic"
