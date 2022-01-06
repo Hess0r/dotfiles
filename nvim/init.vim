@@ -290,6 +290,9 @@ local on_attach = function(client, bufnr)
 
 end
 
+local sumneko_root_path = "/home/gsinka/.config/nvim/lua-language-server"
+local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
@@ -316,6 +319,28 @@ end
         schemas = require('schemastore').json.schemas(),
       },
     }
+  }
+
+  nvim_lsp.sumneko_lua.setup {
+    cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+    settings = {
+      Lua = {
+        runtime = {
+          version = "LuaJIT",
+          path = vim.split(package.path, ";"),
+        },
+        diagnostics = {
+          globals = { "vim" },
+        },
+        workspace = {
+          library = {
+            vim.fn.expand("$VIMRUNTIME/lua"),
+            vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
+          },
+          preloadFileSize = 200,
+        },
+      },
+    },
   }
 
   local pid = vim.fn.getpid()
