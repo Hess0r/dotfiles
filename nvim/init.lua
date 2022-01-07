@@ -17,7 +17,7 @@ vim.opt.expandtab = true
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 20
-vim.opt.signcolumn = 'number'
+vim.opt.signcolumn = 'yes'
 vim.opt.cmdheight = 1
 vim.opt.hidden = true
 vim.opt.shortmess = vim.o.shortmess .. 'c'
@@ -326,3 +326,57 @@ cmp.setup.cmdline('/', {
     { name = 'buffer' }
   }
 })
+
+-- WHICHKEY
+vim.g.which_key_map = {
+  s = {
+    name = '+search',
+    b = 'cur buf fuzzy find',
+    d = 'grep string',
+    f = 'find files',
+    h = 'help tags',
+    m = 'marks',
+    o = 'document symbols',
+    p = 'live grep',
+    t = 'tags',
+  },
+  g = {
+    name = '+git',
+    c = 'commits',
+    d = 'buffer history',
+    s = 'status',
+    b = 'branches',
+  },
+  h = {
+    name = '+git-hunks',
+    p = 'preview hunk',
+    s = 'stage hunk',
+    u = 'undo hunl',
+  },
+  e = 'show line diagnostic',
+  q = 'set location list for diagnostics',
+  f = 'format',
+  D = 'jump to type definition',
+  ['?'] = 'show previously open files',
+  ['ve'] = 'edit vimrc',
+  ['v'] = {name = 'which_key_ignore'},
+  ['rn'] = 'rename',
+  ['r'] = {name = 'which_key_ignore'},
+  ['ca'] = 'coda action',
+  ['c'] = {name = 'which_key_ignore'},
+  ['<CR>'] = 'reload config',
+}
+
+vim.cmd([[
+  highlight default link WhichKeyFloating  Pmenu
+  highlight default link WhichKey          Operator
+  highlight default link WhichKeySeperator DiffAdded
+  highlight default link WhichKeyGroup     Identifier
+  highlight default link WhichKeyDesc      Function
+
+  autocmd! FileType which_key
+  autocmd  FileType which_key set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+]])
+
+vim.call('which_key#register', '<Space>', 'g:which_key_map')
