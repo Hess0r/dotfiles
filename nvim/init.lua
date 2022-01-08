@@ -327,6 +327,9 @@ cmp.setup.cmdline('/', {
   }
 })
 
+-- SNIPPETS
+require("luasnip/loaders/from_vscode").lazy_load()
+
 -- WHICHKEY
 vim.g.which_key_map = {
   s = {
