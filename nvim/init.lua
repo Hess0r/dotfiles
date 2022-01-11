@@ -100,6 +100,8 @@ vim.api.nvim_set_keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>gd', [[<cmd>lua require('telescope.builtin').git_bcommits()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], opts)
 
+vim.api.nvim_set_keymap('n', '<leader>n', [[<cmd>Lexplore<CR>]], opts)
+
 -- TREESITTER
 local nvim_treesitter = require'nvim-treesitter.configs'
 nvim_treesitter.setup {
@@ -368,6 +370,7 @@ vim.g.which_key_map = {
   ['r'] = {name = 'which_key_ignore'},
   ['ca'] = 'coda action',
   ['c'] = {name = 'which_key_ignore'},
+  ['n'] = 'open explorer',
   ['<CR>'] = 'reload config',
 }
 
@@ -384,3 +387,8 @@ vim.cmd([[
 ]])
 
 vim.call('which_key#register', '<Space>', 'g:which_key_map')
+
+-- Netrw
+
+vim.g.netrw_banner = 0
+vim.g.netrw_winsize = 25
