@@ -100,7 +100,8 @@ vim.api.nvim_set_keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>gd', [[<cmd>lua require('telescope.builtin').git_bcommits()<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<CR>]], opts)
 
-vim.api.nvim_set_keymap('n', '<leader>n', [[<cmd>Lexplore<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>n', [[<cmd>Lexplore %:p:h<CR>]], opts)
+vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>Lexplore<CR>]], opts)
 
 -- TREESITTER
 local nvim_treesitter = require'nvim-treesitter.configs'
@@ -374,17 +375,17 @@ vim.g.which_key_map = {
   ['<CR>'] = 'reload config',
 }
 
-vim.cmd([[
-  highlight default link WhichKeyFloating  Pmenu
-  highlight default link WhichKey          Operator
-  highlight default link WhichKeySeperator DiffAdded
-  highlight default link WhichKeyGroup     Identifier
-  highlight default link WhichKeyDesc      Function
+-- vim.api.nvim_command([[
+--   highlight default link WhichKeyFloating  Pmenu
+--   highlight default link WhichKey          Operator
+--   highlight default link WhichKeySeperator DiffAdded
+--   highlight default link WhichKeyGroup     Identifier
+--   highlight default link WhichKeyDesc      Function
 
-  autocmd! FileType which_key
-  autocmd  FileType which_key set laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
-]])
+--   autocmd! FileType which_key
+--   autocmd  FileType which_key set laststatus=0 noshowmode noruler
+--     \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
+-- ]])
 
 vim.call('which_key#register', '<Space>', 'g:which_key_map')
 
