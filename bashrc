@@ -134,6 +134,12 @@ fi
 if type direnv &>/dev/null; then
   eval "$(direnv hook bash)"
 fi
+if type terraform &>/dev/null; then
+  complete -C "$(which terraform)" terraform
+fi
+if type packer &>/dev/null; then
+  complete -C "$(which packer)" packer
+fi
 
 [ -f "`which starship`" ] && eval "$(starship init bash)"
 [ -f /usr/share/doc/fzf/examples/completion.bash ] && source /usr/share/doc/fzf/examples/completion.bash
@@ -197,4 +203,3 @@ fi
 if [[ -f "$HOME/.secrets/keys.sh" ]]; then
   source "$HOME/.secrets/keys.sh"
 fi
-
