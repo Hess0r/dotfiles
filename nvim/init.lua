@@ -29,6 +29,7 @@ vim.opt.wildmenu = true
 vim.opt.list = true
 vim.opt.listchars = 'tab:» ,eol:↲'
 vim.opt.completeopt = 'menu,menuone,noselect'
+vim.opt.splitright = true
 
 -- PLUGINS
 local vim_plug_path = vim.fn.stdpath'data' .. '/site/autoload/plug.vim'
@@ -42,7 +43,8 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin')
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'joshdick/onedark.vim'
+  -- Plug 'joshdick/onedark.vim'
+  Plug 'navarasu/onedark.nvim'
   Plug('junegunn/fzf', { ['do'] = function() vim.call('fzf#install') end })
   Plug 'junegunn/fzf.vim'
   Plug 'tpope/vim-fugitive'
@@ -52,6 +54,8 @@ vim.call('plug#begin')
   Plug 'hrsh7th/cmp-nvim-lsp'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/cmp-cmdline'
   Plug 'L3MON4D3/LuaSnip'
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'kyazdani42/nvim-web-devicons'
@@ -182,6 +186,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+  buf_set_keymap('n', '<space>wq', '<cmd>lua require("telescope.builtin").diagnostics()<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<space>ca', '<cmd>lua require("telescope.builtin").lsp_code_actions()<CR>', opts)
@@ -189,7 +194,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
+  -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
+  buf_set_keymap('n', '<space>q', '<cmd>lua require("telescope.builtin").diagnostics({bufnr=0})<CR>', opts)
   -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 
 end
@@ -233,6 +239,12 @@ nvim_lsp.gopls.setup(config())
 nvim_lsp.yamlls.setup(config())
 
 nvim_lsp.intelephense.setup(config())
+
+nvim_lsp.cssls.setup(config())
+
+nvim_lsp.eslint.setup(config())
+
+nvim_lsp.html.setup(config())
 
 nvim_lsp.jsonls.setup(config({
   settings = {
@@ -361,7 +373,7 @@ vim.g.which_key_map = {
     u = 'undo hunl',
   },
   e = 'show line diagnostic',
-  q = 'set location list for diagnostics',
+  q = 'show current buffer diagnostics',
   f = 'format',
   D = 'jump to type definition',
   ['?'] = 'show previously open files',
@@ -389,6 +401,24 @@ vim.g.which_key_map = {
 
 vim.call('which_key#register', '<Space>', 'g:which_key_map')
 
--- Netrw
+-- NETRW
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+
+-- TELESCOPE
+local actions = require("telescope.actions")
+local telescope = require("telescope")
+telescope.setup {
+  pickers = {
+    buffers = {
+      mappings = {
+        i = {
+          ["<c-r>"] = actions.delete_buffer,
+        },
+        n = {
+          ["<c-r>"] = actions.delete_buffer,
+        }
+      }
+    }
+  }
+}
