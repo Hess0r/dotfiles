@@ -84,6 +84,7 @@ require'nvim-web-devicons'.setup{}
 vim.g.mapleader=" "
 
 local opts = { noremap = true, silent = true }
+local optsNoSilent = { noremap = true, silent = false }
 
 vim.api.nvim_set_keymap('n', '<leader>ve', [[<cmd>e $MYVIMRC<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader><CR>', [[<cmd>source $MYVIMRC<CR>]], opts)
@@ -110,8 +111,7 @@ vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>n', [[<cmd>Lexplore %:p:h<CR>]], opts)
 vim.api.nvim_set_keymap('n', '<leader>m', [[<cmd>Lexplore<CR>]], opts)
 
-vim.api.nvim_set_keymap('n', '<leader>y', [["+y]], opts)
-vim.api.nvim_set_keymap('n', '<leader>p', [["+p]], opts)
+vim.api.nvim_set_keymap('n', '<leader>rr', [[:s/<C-r><C-w>/]], optsNoSilent)
 
 -- TREESITTER
 local nvim_treesitter = require'nvim-treesitter.configs'
