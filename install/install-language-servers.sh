@@ -16,4 +16,6 @@ npm install -g dockerfile-language-server-nodejs \
   vscode-langservers-extracted \
   typescript typescript-language-server \
   intelephense \
-  yaml-language-server
+  yaml-language-server \
+  prettier \
+  eslint

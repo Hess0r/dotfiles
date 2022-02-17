@@ -71,6 +71,7 @@ vim.call('plug#begin')
   Plug 'airblade/vim-gitgutter'
   Plug 'OmniSharp/omnisharp-vim'
   Plug 'liuchengxu/vim-which-key'
+  Plug 'windwp/nvim-autopairs'
 vim.call('plug#end')
 
 -- COLORS
@@ -428,3 +429,6 @@ telescope.setup {
     }
   }
 }
+
+-- AUTOPAIRS
+require("nvim-autopairs").setup{}
