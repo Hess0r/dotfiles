@@ -19,3 +19,8 @@ ln -sf "$PWD/nvim" "$HOME/.config"
 
 mkdir -p "$HOME/.config/starship"
 ln -sf "$PWD/starship/config.toml" "$HOME/.config/starship/config.toml"
+
+if type code &>/dev/null; then
+  ln -sf "$PWD/vscode/keybindings.json" "$HOME/.config/Code/User/keybindings.json"
+  ln -sf "$PWD/vscode/settings.json" "$HOME/.config/Code/User/settings.json"
+fi
