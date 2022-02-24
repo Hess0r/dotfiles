@@ -12,4 +12,7 @@ code --install-extension \
     mhutchie.git-graph \
     ms-vscode-remote.remote-containers \
     esbenp.prettier-vscode \
-    dbaeumer.vscode-eslint
+    dbaeumer.vscode-eslint \
+    ms-azuretools.vscode-docker \
+    vscodevim.vim \
+    golang.Go
