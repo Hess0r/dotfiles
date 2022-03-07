@@ -56,6 +56,24 @@
                 "editor.action.showDefinitionPreviewHover"
             ],
             "silent": true
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.goToReferences"
+            ]
         }
     ],
     "vim.insertModeKeyBindings": [],
@@ -81,5 +99,11 @@
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
     }
 }
