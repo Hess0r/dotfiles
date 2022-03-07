@@ -192,7 +192,8 @@ fmux() {
 
 # source own shell functions in .sh files from shell.d dir
 if [[ -d "$HOME/.shell.d" ]]; then
-  for f in "$HOME/.shell.d/*.sh"
+  FILES="$HOME/.shell.d/*.sh"
+  for f in $FILES
   do
     source $f
   done
