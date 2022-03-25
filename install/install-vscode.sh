@@ -15,5 +15,5 @@ code --install-extension \
     dbaeumer.vscode-eslint \
     ms-azuretools.vscode-docker \
     vscodevim.vim \
-    wayou.vscode-todo-highlight \
+    Gruntfuggly.todo-tree \
     golang.Go
