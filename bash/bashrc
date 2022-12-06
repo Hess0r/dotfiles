@@ -52,6 +52,7 @@ export GOBIN="$HOME/go/bin"
 export GOPATH="$HOME/go"
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export PATH=$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin
+export PATH=$PATH:$HOME/.config/composer/vendor/bin
 
 export STARSHIP_CONFIG="$HOME/.config/starship/config.toml"
 
@@ -64,6 +65,9 @@ export FZF_DEFAULT_COMMAND="rg --files"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export NNN_FIFO='/tmp/nnn.fifo'
+export NNN_PLUG='p:preview-tui'
 # ==========================================================
 
 # ALIASES
@@ -80,30 +84,68 @@ alias la='ls -A'
 alias l='ls -CF'
 if type nvim &>/dev/null; then
   alias vim='nvim'
+  alias v='vim'
 fi
-dcv1='docker-compose'
-dcv2='docker compose'
-dcExe='docker compose'
-alias dco="$dcExe"
-alias dcb="$dcExe build"
-alias dce="$dcExe exec"
-alias dcps="$dcExe ps"
-alias dcc="$dcExe config"
-alias dcrestart="$dcExe restart"
-alias dcrm="$dcExe rm"
-alias dcr="$dcExe run"
-alias dcstop="$dcExe stop"
-alias dcup="$dcExe up"
-alias dcupb="$dcExe up --build"
-alias dcupd="$dcExe up -d"
-alias dcdn="$dcExe down"
-alias dcl="$dcExe logs"
-alias dclf="$dcExe logs -f"
-alias dcpull="$dcExe pull"
-alias dcstart="$dcExe start"
-alias dck="$dcExe kill"
+
+alias nn="n -Hde"
+
+alias lg="lazygit"
+alias ld="lazydocker"
+
+alias dco="docker compose"
+alias dcb="docker compose build"
+alias dce="docker compose exec"
+alias dcps="docker compose ps"
+alias dcc="docker compose config"
+alias dcrestart="docker compose restart"
+alias dcrm="docker compose rm"
+alias dcr="docker compose run"
+alias dcstop="docker compose stop"
+alias dcup="docker compose up"
+alias dcupb="docker compose up --build"
+alias dcupd="docker compose up -d"
+alias dcdn="docker compose down"
+alias dcl="docker compose logs"
+alias dclf="docker compose logs -f"
+alias dcpull="docker compose pull"
+alias dcstart="docker compose start"
+alias dck="docker compose kill"
+
+alias artisan='php artisan'
+alias pas='php artisan serve'
+alias pasd='XDEBUG_SESSION=1 php artisan serve'
+alias pam='php artisan migrate'
+alias pamf='php artisan migrate:fresh'
+alias pamfs='php artisan migrate:fresh --seed'
+alias pamr='php artisan migrate:rollback'
+alias pads='php artisan db:seed'
+alias pamm='php artisan make:model'
+alias pamc='php artisan make:controller'
+alias pams='php artisan make:seeder'
+alias pamt='php artisan make:test'
+alias pamfa='php artisan make:factory'
+alias pamp='php artisan make:policy'
+alias pame='php artisan make:event'
+alias pamj='php artisan make:job'
+alias paml='php artisan make:listener'
+alias pamn='php artisan make:notification'
+alias pampp='php artisan make:provider'
+alias pacac='php artisan cache:clear'
+alias pacoc='php artisan config:clear'
+alias pavic='php artisan view:clear'
+alias paroc='php artisan route:clear'
+alias paqf='php artisan queue:failed'
+alias paqft='php artisan queue:failed-table'
+alias paql='php artisan queue:listen'
+alias paqr='php artisan queue:retry'
+alias paqt='php artisan queue:table'
+alias paqw='php artisan queue:work'
 alias sail='./vendor/bin/sail'
+alias pint='./vendor/bin/pint'
+alias phpstan='./vendor/bin/phpstan'
+
 alias dotfiles="cd $DOTFILES"
+
 alias gs='git status'
 alias gco='git checkout'
 alias ga='git add'
@@ -147,29 +189,13 @@ fi
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 # ==========================================================
 
+# GHCUP (HASKELL)
+# ==========================================================
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
+# ==========================================================
+
 # FUNCTIONS
 # ==========================================================
-chdc() {
-  [[ "$dcExe" == "$dcv1" ]] && dcExe=$dcv2 || dcExe=$dcv1
-  alias dco="$dcExe"
-  alias dcb="$dcExe build"
-  alias dce="$dcExe exec"
-  alias dcps="$dcExe ps"
-  alias dcrestart="$dcExe restart"
-  alias dcrm="$dcExe rm"
-  alias dcr="$dcExe run"
-  alias dcstop="$dcExe stop"
-  alias dcup="$dcExe up"
-  alias dcupb="$dcExe up --build"
-  alias dcupd="$dcExe up -d"
-  alias dcdn="$dcExe down"
-  alias dcl="$dcExe logs"
-  alias dclf="$dcExe logs -f"
-  alias dcpull="$dcExe pull"
-  alias dcstart="$dcExe start"
-  alias dck="$dcExe kill"
-}
-
 fco() {
     branch=`git branch | fzf --layout=reverse --height=10% --preview-window=right:hidden --info=inline | tr -d "*"`
     if [[ -z $branch ]]; then
@@ -190,14 +216,70 @@ fmux() {
     tmux a -t $session
 }
 
-# source own shell functions in .sh files from shell.d dir
-if [[ -d "$HOME/.shell.d" ]]; then
-  FILES="$HOME/.shell.d/*.sh"
-  for f in $FILES
-  do
-    source $f
-  done
-fi
+n() {
+    if [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ]; then
+      echo "nnn is already running"
+      return
+    fi
+
+    # Use export to ALWAYS cd on quit, otherwise its goind to cd on ^G
+    NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    # export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    nnn "$@"
+
+    if [ -f "$NNN_TMPFILE" ]; then
+      . "$NNN_TMPFILE"
+      rm -f "$NNN_TMPFILE" > /dev/null
+    fi
+}
+
+chphp() {
+  local phpfile=/usr/bin/php$1
+  if [ -f "$phpfile" ]; then
+    sudo update-alternatives --set php /usr/bin/php$1
+    return 0;
+  else
+    echo "File: $phpfile does not exist!"
+    return 1;
+  fi
+}
+
+fcd() {
+  directory=$(fd . ~/Repos ~/Repos/Parked -t d -d 1 | fzf)
+
+  if [[ -z $directory ]]; then
+    exit 0
+  fi
+
+  cd $directory
+}
+
+frepo() {
+  directory=$(fd . ~/Repos ~/Work/Repos -t d -d 1 -E Parked | fzf)
+
+  if [[ -z $directory ]]; then
+    exit 0
+  fi
+
+  session_name=$(basename "$directory")
+  tmux_running=$(pgrep tmux)
+
+  if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+    tmux new-session -s $session_name -c $directory
+    exit 0
+  fi
+
+  if ! tmux has-session -t=$session_name 2> /dev/null; then
+    tmux new-session -ds $session_name -c $directory
+  fi
+
+  if [[ -z $TMUX ]]; then
+    tmux attach-session -t $session_name
+  else
+    tmux switch-client -t $session_name
+  fi
+}
 # ==========================================================
 
 
