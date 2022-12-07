@@ -30,6 +30,6 @@ nvim_treesitter.setup {
       },
     },
   },
-  ensure_installed = { 'lua', 'php', 'bash', 'css', 'javascript' },
+  -- ensure_installed = { 'lua', 'php', 'bash', 'css', 'javascript', 'html', 'help' },
   -- ensure_installed = "maintained",
 }

@@ -1,9 +1,15 @@
+require('mason').setup()
+require('mason-lspconfig').setup({ automatic_installation = true })
+
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
+  local opts = { noremap = true, silent = true }
+
+  local function buf_set_keymap(...) vim.keymap.set(...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   -- Enable completion triggered by <c-x><c-o>
@@ -27,16 +33,11 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua require("telescope.builtin").diagnostics({bufnr=0})<CR>', opts)
-  -- buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.format({ async = true })<CR>', opts)
 
 end
 
---local sumneko_root_path = "/home/gsinka/.config/nvim/lua-language-server"
-local sumneko_root_path = vim.fn.stdpath'data' .. "/site/lua-language-server"
-
-local sumneko_binary = sumneko_root_path .. "/bin/lua-language-server"
-
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 local function config(_config)
   return vim.tbl_deep_extend("force", {
@@ -47,17 +48,6 @@ local function config(_config)
     capabilities = capabilities,
   }, _config or {})
 end
-
--- local servers = { 'tsserver', 'bashls', 'dockerls', 'gopls', 'yamlls', 'intelephense' }
--- for _, lsp in ipairs(servers) do
---   nvim_lsp[lsp].setup {
---     on_attach = on_attach,
---     flags = {
---       debounce_text_changes = 150,
---     },
---     capabilities = capabilities
---   }
--- end
 
 nvim_lsp.tsserver.setup(config())
 
@@ -85,32 +75,21 @@ nvim_lsp.jsonls.setup(config({
   }
 }))
 
--- nvim_lsp.sumneko_lua.setup(config({
---   cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
---   settings = {
---     Lua = {
---       runtime = {
---         version = "LuaJIT",
---         path = vim.split(package.path, ";"),
---       },
---       diagnostics = {
---         globals = { "vim" },
---       },
---       workspace = {
---         library = {
---           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
---           [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
---         },
---         preloadFileSize = 200,
---         checkThirdParty = false,
---       },
---     },
---   },
--- }))
+require('null-ls').setup({
+  sources = {
+    require('null-ls').builtins.diagnostics.eslint_d.with({
+      condition = function(utils)
+        return utils.root_has_file({ '.eslintrc.js' })
+      end,
+    }),
+    require('null-ls').builtins.diagnostics.trail_space.with({}),
+    require('null-ls').builtins.formatting.eslint_d.with({
+      condition = function(utils)
+        return utils.root_has_file({ '.eslintrc.js' })
+      end,
+    }),
+    require('null-ls').builtins.formatting.prettierd,
+  },
+})
 
-local pid = vim.fn.getpid()
-nvim_lsp.omnisharp.setup(config({
-  on_attach = on_attach,
-  cmd = { vim.env.HOME .. "/.cache/omnisharp-vim/omnisharp-roslyn/run", "--languageserver", "--hostPID", tostring(pid) };
-}))
-
+require('mason-null-ls').setup({ automatic_installation = true })

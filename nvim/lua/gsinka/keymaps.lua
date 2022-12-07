@@ -5,11 +5,11 @@ local opts = { noremap = true, silent = true }
 local optsNoSilent = { noremap = true, silent = false }
 
 local function nnoremap(key, command, opts)
-  vim.api.nvim_set_keymap('n', key, command, opts)
+  vim.keymap.set('n', key, command, opts)
 end
 
 local function vnoremap(keymap, command, opts)
-  vim.api.nvim_set_keymap('v', keymap, command, opts)
+  vim.keymap.set('v', keymap, command, opts)
 end
 
 nnoremap('<leader>ve', [[<cmd>e $MYVIMRC<CR>]], opts)

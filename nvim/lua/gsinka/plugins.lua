@@ -9,6 +9,8 @@ local ensure_packer = function ()
     return false
 end
 
+local packer_bootstrap = ensure_packer()
+
 require('packer').init({
   compile_path = vim.fn.stdpath('data')..'/site/plugin/packer_compiled.lua',
   display = {
@@ -20,17 +22,24 @@ require('packer').init({
 
 local use = require('packer').use
 
-local packer_bootstrap = ensure_packer() 
-
 use('wbthomason/packer.nvim')
+
 use('vim-airline/vim-airline')
 use('vim-airline/vim-airline-themes')
+
+use('tpope/vim-commentary')
+use('tpope/vim-fugitive')
+use('sheerun/vim-polyglot')
+use('windwp/nvim-autopairs')
+use('nelstrom/vim-visual-star-search')
+
 use({
 	'navarasu/onedark.nvim',
 	config = function()
 		vim.cmd('colorscheme onedark')
 	end
 })
+
 use({
   'nvim-telescope/telescope.nvim',
   requires = {
@@ -43,18 +52,56 @@ use({
     require('gsinka.plugins.telescope')
   end,
 })
+
 use({
   'nvim-treesitter/nvim-treesitter',
-  run = ':TSUpdate',
+  run = function()
+    require('nvim-treesitter.install').update({ with_sync = true })
+  end,
   requires = {
-    'nvim-treesitter/playground',
     'JoosepAlviste/nvim-ts-context-commentstring',
+    'nvim-treesitter/nvim-treesitter-textobjects',
   },
   config = function()
     require('gsinka.plugins.treesitter')
   end,
 })
-use('tpope/vim-commentary')
+
+use({
+  'neovim/nvim-lspconfig',
+  requires = {
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'b0o/schemastore.nvim',
+    'jose-elias-alvarez/null-ls.nvim',
+    'jayp0521/mason-null-ls.nvim',
+  },
+  config = function ()
+    require('gsinka.plugins.lsp')
+  end,
+})
+
+use({
+  'hrsh7th/nvim-cmp',
+  requires = {
+    'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-nvim-lsp-signature-help',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+    'L3MON4D3/LuaSnip',
+    'saadparwaiz1/cmp_luasnip',
+    'onsails/lspkind-nvim',
+  },
+  config = function()
+    require('gsinka.plugins.cmp')
+  end,
+})
+
+use({
+  'phpactor/phpactor',
+  ft = 'php',
+  run = 'composer install --no-dev --optimize-autoloader',
+})
 
 if packer_bootstrap then
   require('packer').sync()
@@ -69,25 +116,9 @@ vim.cmd([[
 
   -- Plug('junegunn/fzf', { ['do'] = function() vim.call('fzf#install') end })
   -- Plug 'junegunn/fzf.vim'
-  -- Plug 'tpope/vim-fugitive'
-  -- Plug 'neovim/nvim-lspconfig'
-  -- Plug 'tpope/vim-commentary'
-  -- Plug('nvim-treesitter/nvim-treesitter', {['do'] = function() vim.cmd(':TSUpdate') end})
-  -- Plug 'hrsh7th/cmp-nvim-lsp'
-  -- Plug 'hrsh7th/nvim-cmp'
-  -- Plug 'hrsh7th/cmp-buffer'
-  -- Plug 'hrsh7th/cmp-path'
   -- Plug 'hrsh7th/cmp-cmdline'
-  -- Plug 'L3MON4D3/LuaSnip'
-  -- Plug 'saadparwaiz1/cmp_luasnip'
-  -- Plug 'kyazdani42/nvim-web-devicons'
-  -- Plug 'nvim-lua/plenary.nvim'
-  -- Plug 'b0o/schemastore.nvim'
-  -- Plug 'onsails/lspkind-nvim'
   -- Plug 'sbdchd/neoformat'
   -- Plug 'rafamadriz/friendly-snippets'
   -- Plug 'airblade/vim-gitgutter'
-  -- Plug 'OmniSharp/omnisharp-vim'
   -- Plug 'liuchengxu/vim-which-key'
-  -- Plug 'windwp/nvim-autopairs'
 
