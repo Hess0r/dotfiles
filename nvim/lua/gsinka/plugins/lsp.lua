@@ -91,6 +91,7 @@ require('null-ls').setup({
       end,
     }),
     require('null-ls').builtins.formatting.prettierd,
+    require('null-ls').builtins.formatting.pint,
   },
 })
 

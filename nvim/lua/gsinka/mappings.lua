@@ -46,5 +46,8 @@ nnoremap('<leader>rr', [[:s/<C-r><C-w>/]], optsNoSilent)
 
 nnoremap('<leader>x', [[<cmd>set spell!<CR>]], opts)
 
-nnoremap('<A-t>', ':FloatermToggle scratch<CR>', opts)
-tnoremap('<A-t>', '<C-\\><C-n>:FloatermToggle scratch<CR>', opts)
+nnoremap('<A-\'>', ':FloatermToggle<CR>', opts)
+tnoremap('<A-\'>', '<C-\\><C-n>:FloatermToggle<CR>', opts)
+tnoremap('<A-\">', '<C-\\><C-n>:FloatermNew<CR>', opts)
+tnoremap('<A-j>', '<C-\\><C-n>:FloatermNext<CR>', opts)
+tnoremap('<A-k>', '<C-\\><C-n>:FloatermPrev<CR>', opts)
