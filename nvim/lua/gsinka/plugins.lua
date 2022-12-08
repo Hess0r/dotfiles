@@ -27,6 +27,8 @@ use('wbthomason/packer.nvim')
 use('tpope/vim-commentary')
 use('tpope/vim-fugitive')
 use('tpope/vim-eunuch')
+use('tpope/vim-unimpaired')
+use('tpope/vim-sleuth')
 use('sheerun/vim-polyglot')
 use({
     'windwp/nvim-autopairs',
@@ -38,19 +40,11 @@ use('nelstrom/vim-visual-star-search')
 use('airblade/vim-gitgutter')
 
 use({
-	"luukvbaal/nnn.nvim",
-	config = function()
-    require('gsinka.plugins.nnn')
-  end
-})
-
-use({
-	'navarasu/onedark.nvim',
-	config = function()
-    require('onedark').load()
-		-- vim.cmd('colorscheme onedark')
-	end
-})
+    'luukvbaal/nnn.nvim',
+    config = function()
+      require('gsinka.plugins.nnn')
+    end
+  })
 
 use({
     'akinsho/bufferline.nvim',
@@ -59,15 +53,23 @@ use({
     config = function()
       require('bufferline').setup()
     end
-})
+  })
 
-use('vim-airline/vim-airline')
 use({
-  'vim-airline/vim-airline-themes',
-  config = function ()
-    vim.g.airline_theme = 'onedark'
-  end
-})
+    'nvim-lualine/lualine.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function()
+      -- require('gsinka.plugins.lualine')
+      require('lualine').setup()
+    end,
+  })
+-- use('vim-airline/vim-airline')
+-- use({
+--   'vim-airline/vim-airline-themes',
+--   config = function ()
+--     vim.g.airline_theme = 'onedark'
+--   end
+-- })
 
 use({
   'nvim-telescope/telescope.nvim',
@@ -95,6 +97,14 @@ use({
     require('gsinka.plugins.treesitter')
   end,
 })
+
+use({
+	'navarasu/onedark.nvim',
+	config = function()
+    require('onedark').load()
+	end
+})
+
 
 use({
   'neovim/nvim-lspconfig',
