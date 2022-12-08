@@ -24,20 +24,26 @@ local use = require('packer').use
 
 use('wbthomason/packer.nvim')
 
-use('vim-airline/vim-airline')
-use('vim-airline/vim-airline-themes')
-
 use('tpope/vim-commentary')
 use('tpope/vim-fugitive')
 use('sheerun/vim-polyglot')
 use('windwp/nvim-autopairs')
 use('nelstrom/vim-visual-star-search')
+use('airblade/vim-gitgutter')
 
 use({
-	'navarasu/onedark.nvim',
+	'joshdick/onedark.vim',
 	config = function()
 		vim.cmd('colorscheme onedark')
 	end
+})
+
+use('vim-airline/vim-airline')
+use({
+  'vim-airline/vim-airline-themes',
+  config = function ()
+    vim.g.airline_theme = 'onedark'
+  end
 })
 
 use({
@@ -59,8 +65,8 @@ use({
     require('nvim-treesitter.install').update({ with_sync = true })
   end,
   requires = {
-    'JoosepAlviste/nvim-ts-context-commentstring',
     'nvim-treesitter/nvim-treesitter-textobjects',
+    'JoosepAlviste/nvim-ts-context-commentstring',
   },
   config = function()
     require('gsinka.plugins.treesitter')
@@ -103,6 +109,13 @@ use({
   run = 'composer install --no-dev --optimize-autoloader',
 })
 
+use({
+  'liuchengxu/vim-which-key',
+  config = function()
+    require('gsinka.plugins.whichkey')
+  end
+})
+
 if packer_bootstrap then
   require('packer').sync()
 end
@@ -119,6 +132,4 @@ vim.cmd([[
   -- Plug 'hrsh7th/cmp-cmdline'
   -- Plug 'sbdchd/neoformat'
   -- Plug 'rafamadriz/friendly-snippets'
-  -- Plug 'airblade/vim-gitgutter'
-  -- Plug 'liuchengxu/vim-which-key'
 

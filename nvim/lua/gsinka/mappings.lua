@@ -1,21 +1,17 @@
+local keymap = require('gsinka.keymap')
+local nnoremap = keymap.nnoremap
+local vnoremap = keymap.vnoremap
+local opts = keymap.opts
+local optsNoSilent = keymap.optsNoSilent
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-local opts = { noremap = true, silent = true }
-local optsNoSilent = { noremap = true, silent = false }
-
-local function nnoremap(key, command, opts)
-  vim.keymap.set('n', key, command, opts)
-end
-
-local function vnoremap(keymap, command, opts)
-  vim.keymap.set('v', keymap, command, opts)
-end
-
 nnoremap('<leader>ve', [[<cmd>e $MYVIMRC<CR>]], opts)
 nnoremap('<leader><CR>', [[<cmd>source $MYVIMRC<CR>]], opts)
---nnoremap('<leader>', [[<cmd>WhichKey '<Space>'<CR>]], opts)
---vim.api.nvim_set_keymap('v', '<leader>', [[<cmd>WhichKeyVisual '<Space>'<CR>]], opts)
+
+nnoremap('<leader>', [[<cmd>WhichKey '<Space>'<CR>]], opts)
+vnoremap('<leader>', [[<cmd>WhichKeyVisual '<Space>'<CR>]], opts)
 
 nnoremap('<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], opts)
 nnoremap('<leader>sf', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], opts)

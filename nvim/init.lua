@@ -1,10 +1,4 @@
 require('gsinka.sets')
 require('gsinka.plugins')
-require('gsinka.colors')
-require('gsinka.keymaps')
--- require('gsinka.treesitter')
--- require('gsinka.lsp')
--- require('gsinka.cmp')
--- require('gsinka.telescope')
+require('gsinka.mappings')
 -- require('gsinka.misc')
-
