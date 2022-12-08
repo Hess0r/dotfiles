@@ -31,10 +31,18 @@ use('windwp/nvim-autopairs')
 use('nelstrom/vim-visual-star-search')
 use('airblade/vim-gitgutter')
 
-use({
-	'joshdick/onedark.vim',
+use {
+	"luukvbaal/nnn.nvim",
 	config = function()
-		vim.cmd('colorscheme onedark')
+    require('gsinka.plugins.nnn')
+  end
+}
+
+use({
+	'navarasu/onedark.nvim',
+	config = function()
+    require('onedark').load()
+		-- vim.cmd('colorscheme onedark')
 	end
 })
 
@@ -107,6 +115,13 @@ use({
   'phpactor/phpactor',
   ft = 'php',
   run = 'composer install --no-dev --optimize-autoloader',
+})
+
+use({
+  'voldikss/vim-floaterm',
+  config = function()
+    require('gsinka.plugins.floaterm')
+  end,
 })
 
 use({

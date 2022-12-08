@@ -11,4 +11,8 @@ M.vnoremap = function (keymap, command, opts)
   vim.keymap.set('v', keymap, command, opts)
 end
 
+M.tnoremap = function (keymap, command, opts)
+  vim.keymap.set('t', keymap, command, opts)
+end
+
 return M
