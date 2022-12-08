@@ -1,6 +1,8 @@
-local cmp = require'cmp'
-local lspkind = require'lspkind'
-local luasnip = require'luasnip'
+local cmp = require('cmp')
+local lspkind = require('lspkind')
+local luasnip = require('luasnip')
+
+vim.o.completeopt = 'menuone,longest,preview'
 
 cmp.setup({
   snippet = {
@@ -9,6 +11,8 @@ cmp.setup({
     end,
   },
   mapping = {
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     ['<C-u>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
@@ -17,36 +21,26 @@ cmp.setup({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    -- ['<CR>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
     ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-    -- ['<C-j>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-    -- ['<C-k>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-    -- ['<Tab>'] = function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_next_item()
-    --   elseif luasnip.expand_or_jumpable() then
-    --     luasnip.expand_or_jump()
-    --   else
-    --     fallback()
-    --   end
-    -- end,
-    -- ['<S-Tab>'] = function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_prev_item()
-    --   elseif luasnip.jumpable(-1) then
-    --     luasnip.jump(-1)
-    --   else
-    --     fallback()
-    --   end
-    -- end,
   },
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'luasnip' },
+    { name = 'nvim_lua' },
     { name = 'buffer' },
+    { name = 'path' },
   }),
   formatting = {
-    format = lspkind.cmp_format({with_text = true, maxwidth = 50})
+    format = lspkind.cmp_format({
+      with_text = true,
+      maxwidth = 50,
+      menu = {
+        nvim_lsp = '[LSP]',
+        nvim_lua = '[Lua]',
+        nvim_lsp = '[BUF]',
+      }
+    })
   },
 })
 

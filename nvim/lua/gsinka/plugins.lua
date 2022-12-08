@@ -26,17 +26,23 @@ use('wbthomason/packer.nvim')
 
 use('tpope/vim-commentary')
 use('tpope/vim-fugitive')
+use('tpope/vim-eunuch')
 use('sheerun/vim-polyglot')
-use('windwp/nvim-autopairs')
+use({
+    'windwp/nvim-autopairs',
+    config = function()
+      require("nvim-autopairs").setup()
+    end
+  })
 use('nelstrom/vim-visual-star-search')
 use('airblade/vim-gitgutter')
 
-use {
+use({
 	"luukvbaal/nnn.nvim",
 	config = function()
     require('gsinka.plugins.nnn')
   end
-}
+})
 
 use({
 	'navarasu/onedark.nvim',
@@ -44,6 +50,15 @@ use({
     require('onedark').load()
 		-- vim.cmd('colorscheme onedark')
 	end
+})
+
+use({
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    after = 'onedark.nvim',
+    config = function()
+      require('bufferline').setup()
+    end
 })
 
 use('vim-airline/vim-airline')
@@ -96,12 +111,20 @@ use({
 })
 
 use({
+    'L3MON4D3/LuaSnip',
+    config = function ()
+      require('gsinka.plugins.luasnip')
+    end
+})
+
+use({
   'hrsh7th/nvim-cmp',
   requires = {
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-nvim-lsp-signature-help',
     'hrsh7th/cmp-buffer',
     'hrsh7th/cmp-path',
+    'hrsh7th/cmp-cmdline',
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
     'onsails/lspkind-nvim',
@@ -131,6 +154,19 @@ use({
   end
 })
 
+use({
+  'weilbith/nvim-code-action-menu',
+  cmd = 'CodeActionMenu',
+})
+
+use({
+  'folke/trouble.nvim',
+  requires = 'kyazdani42/nvim-web-devicons',
+  config = function()
+    require('trouble').setup()
+  end,
+})
+
 if packer_bootstrap then
   require('packer').sync()
 end
@@ -144,7 +180,6 @@ vim.cmd([[
 
   -- Plug('junegunn/fzf', { ['do'] = function() vim.call('fzf#install') end })
   -- Plug 'junegunn/fzf.vim'
-  -- Plug 'hrsh7th/cmp-cmdline'
   -- Plug 'sbdchd/neoformat'
   -- Plug 'rafamadriz/friendly-snippets'
 
