@@ -1,10 +1,9 @@
 #!/bin/sh
 
-# ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
-# ln -sf "$PWD/bash/inputrc" "$HOME/.inputrc"
+ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
+ln -sf "$PWD/bash/inputrc" "$HOME/.inputrc"
 
-# rm "$HOME/.shell.d"
-# ln -sf "$PWD/shell.d" "$HOME/"
+ln -sf "$PWD/shell.d" "$HOME/"
 
 # ln -sf "$PWD/tmux/tmux.conf" "$HOME/.tmux.conf"
 # [ -d "$PWD/secrets" ] && ln -sf "$PWD/secrets" "$HOME/.secrets"
