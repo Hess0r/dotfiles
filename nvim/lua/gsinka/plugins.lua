@@ -99,12 +99,19 @@ use({
 })
 
 use({
-	'navarasu/onedark.nvim',
-	config = function()
-    require('onedark').load()
-	end
-})
+    'navarasu/onedark.nvim',
+    config = function()
+      require('onedark').load()
+    end
+  })
 
+use({
+    'danymat/neogen',
+    config = function()
+      require('neogen').setup({})
+    end,
+    requires = 'nvim-treesitter/nvim-treesitter',
+  })
 
 use({
   'neovim/nvim-lspconfig',
