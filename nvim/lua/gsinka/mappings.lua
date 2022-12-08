@@ -8,14 +8,12 @@ local optsNoSilent = keymap.optsNoSilent
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-nnoremap('<leader>ve', [[<cmd>e $MYVIMRC<CR>]], opts)
-nnoremap('<leader><CR>', [[<cmd>source $MYVIMRC<CR>]], opts)
-
 nnoremap('<leader>', [[<cmd>WhichKey '<Space>'<CR>]], opts)
 vnoremap('<leader>', [[<cmd>WhichKeyVisual '<Space>'<CR>]], opts)
 
 nnoremap('<leader><space>', [[<cmd>lua require('telescope.builtin').buffers()<CR>]], opts)
 nnoremap('<leader>sf', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], opts)
+nnoremap('<C-p>', [[<cmd>lua require('telescope.builtin').find_files()<CR>]], opts)
 nnoremap('<leader>sg', [[<cmd>lua require('telescope.builtin').git_files()<CR>]], opts)
 nnoremap('<leader>sb', [[<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>]], opts)
 nnoremap('<leader>sh', [[<cmd>lua require('telescope.builtin').help_tags()<CR>]], opts)
@@ -44,13 +42,9 @@ tnoremap('<C-A-p>', [[<cmd>NnnPicker<CR>]], opts)
 
 tnoremap('<ESC><ESC>', [[<C-\><C-n>]], opts)
 
--- nnoremap('<leader>f', [[<cmd>Neoformat<CR>]], opts)
-
 nnoremap('<leader>rr', [[:s/<C-r><C-w>/]], optsNoSilent)
 
 nnoremap('<leader>x', [[<cmd>set spell!<CR>]], opts)
 
-nnoremap('<leader>t', ':FloatermToggle scratch<CR>')
--- nnoremap('<F1>', ':FloatermToggle scratch<CR>')
--- tnoremap('<F1>', '<C-\\><C-n>:FloatermToggle scratch<CR>')
-
+nnoremap('<A-t>', ':FloatermToggle scratch<CR>', opts)
+tnoremap('<A-t>', '<C-\\><C-n>:FloatermToggle scratch<CR>', opts)
