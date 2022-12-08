@@ -194,8 +194,8 @@ fi
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 # ==========================================================
 
-if [ -d "$HOME/shell.d" ]; then
-  for f in $HOME/shell.d/*.sh; do
+if [ -d "$HOME/.shell.d" ]; then
+  for f in $HOME/.shell.d/*.sh; do
     source $f
   done
 fi
