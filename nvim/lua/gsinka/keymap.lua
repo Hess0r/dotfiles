@@ -46,7 +46,7 @@ M.wktnoremap = function(prefix, config)
   wk.register(config, wktopts(prefix))
 end
 
-M.wktvoremap = function(prefix, config)
+M.wkvnoremap = function(prefix, config)
   wk.register(config, wkvopts(prefix))
 end
 
