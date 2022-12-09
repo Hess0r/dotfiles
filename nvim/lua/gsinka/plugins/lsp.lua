@@ -24,18 +24,18 @@ local on_attach = function(client, bufnr)
       q = { "<cmd>lua require('telescope.builtin').diagnostics()<CR>", 'Workspace diagnostics' },
     },
     g = {
-      name = 'LSP Definitions'
+      name = 'LSP Definitions',
       D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", 'Declaration' },
       d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", 'Definitions' },
       i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", 'Implementations' },
       r = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", 'References' },
     },
     r = {
-      name = 'Refactor'
+      name = 'Refactor',
       n = { "<cmd>lua vim.lsp.buf.rename()<CR>", 'Rename' },
     },
     c = {
-      name = 'Code'
+      name = 'Code',
       a = { "<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>", 'Code actions' },
     },
     D = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", 'Type definition' },
