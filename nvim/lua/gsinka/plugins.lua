@@ -180,7 +180,7 @@ use({
 })
 
 use({
-  'liuchengxu/vim-which-key',
+  'folke/which-key.nvim',
   config = function()
     require('gsinka.plugins.whichkey')
   end

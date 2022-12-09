@@ -1,3 +1,5 @@
+local wk = require('which-key')
+
 local M = {}
 
 M.opts = { noremap = true, silent = true }
@@ -13,6 +15,28 @@ end
 
 M.tnoremap = function (keymap, command, opts)
   vim.keymap.set('t', keymap, command, opts)
+end
+
+local wknopts = function (prefix)
+  return {
+    mode = 'n',
+    prefix = prefix,
+  }
+end
+
+local wktopts = function (prefix)
+  return {
+    mode = 't',
+    prefix = prefix,
+  }
+end
+
+M.wknnoremap = function(prefix, config)
+  wk.register(config, wknopts(prefix))
+end
+
+M.wktnoremap = function(prefix, config)
+  wk.register(config, wktopts(prefix))
 end
 
 return M

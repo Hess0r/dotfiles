@@ -1,3 +1,6 @@
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 local keymap = require('gsinka.keymap')
 local nnoremap = keymap.nnoremap
 local vnoremap = keymap.vnoremap
@@ -5,8 +8,6 @@ local tnoremap = keymap.tnoremap
 local opts = keymap.opts
 local optsNoSilent = keymap.optsNoSilent
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 nnoremap('<leader>', [[<cmd>WhichKey '<Space>'<CR>]], opts)
 vnoremap('<leader>', [[<cmd>WhichKeyVisual '<Space>'<CR>]], opts)
