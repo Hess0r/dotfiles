@@ -49,7 +49,6 @@ use({
 use({
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
-    after = 'onedark.nvim',
     config = function()
       require('bufferline').setup()
     end
@@ -91,13 +90,26 @@ use({
     require('gsinka.plugins.treesitter')
   end,
 })
+use({
+    'folke/tokyonight.nvim',
+    config = function()
+      require('gsinka.plugins.colors')
+    end
+})
+
+use({
+    'EdenEast/nightfox.nvim',
+    config = function()
+      require('gsinka.plugins.colors')
+    end
+})
 
 use({
     'navarasu/onedark.nvim',
     config = function()
-      require('onedark').load()
+      require('gsinka.plugins.colors')
     end
-  })
+})
 
 use({
     'danymat/neogen',

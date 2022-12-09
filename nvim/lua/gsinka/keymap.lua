@@ -24,6 +24,13 @@ local wknopts = function (prefix)
   }
 end
 
+local wkvopts = function (prefix)
+  return {
+    mode = 'v',
+    prefix = prefix,
+  }
+end
+
 local wktopts = function (prefix)
   return {
     mode = 't',
@@ -37,6 +44,10 @@ end
 
 M.wktnoremap = function(prefix, config)
   wk.register(config, wktopts(prefix))
+end
+
+M.wktvoremap = function(prefix, config)
+  wk.register(config, wkvopts(prefix))
 end
 
 return M

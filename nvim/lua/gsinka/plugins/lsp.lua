@@ -1,5 +1,6 @@
 local keymap = require('gsinka.keymap')
 local nnoremap = keymap.wknnoremap
+local vnoremap = keymap.wkvnoremap
 
 require('mason').setup()
 require('mason-lspconfig').setup({ automatic_installation = true })
@@ -36,13 +37,21 @@ local on_attach = function(client, bufnr)
     },
     c = {
       name = 'Code',
-      a = { "<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>", 'Code actions' },
+      -- a = { "<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>", 'Code actions' },
+      a = { "<cmd>CodeActionMenu<CR>", 'Code actions' },
     },
     D = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", 'Type definition' },
     e = { "<cmd>lua vim.diagnostic.open_float()<CR>", 'Open float' },
     q = { "<cmd>lua require('telescope.builtin').diagnostics({bufnr=0})<CR>", 'Buffer diagnostics' },
     f = { "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", 'Format' },
   })
+
+  vnoremap('<leader>', {
+      c = {
+        name = 'Code',
+        a = { "<cmd>CodeActionMenu<CR>", 'Code actions' },
+      },
+    })
 
   nnoremap('', {
     K = { "<cmd>lua vim.lsp.buf.hover()<CR>", 'Hover' },
@@ -75,8 +84,8 @@ nvim_lsp.gopls.setup(config())
 
 nvim_lsp.yamlls.setup(config())
 
--- nvim_lsp.intelephense.setup(config())
-nvim_lsp.phpactor.setup(config())
+nvim_lsp.intelephense.setup(config())
+-- nvim_lsp.phpactor.setup(config())
 
 nvim_lsp.cssls.setup(config())
 
