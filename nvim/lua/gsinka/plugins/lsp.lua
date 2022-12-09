@@ -6,6 +6,7 @@ require('mason').setup()
 require('mason-lspconfig').setup({ automatic_installation = true })
 
 local nvim_lsp = require('lspconfig')
+local null_ls = require('null-ls')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -89,7 +90,7 @@ nvim_lsp.intelephense.setup(config())
 
 nvim_lsp.cssls.setup(config())
 
-nvim_lsp.eslint.setup(config())
+-- nvim_lsp.eslint.setup(config())
 
 nvim_lsp.html.setup(config())
 
@@ -103,21 +104,17 @@ nvim_lsp.jsonls.setup(config({
   }
 }))
 
-require('null-ls').setup({
+null_ls.setup({
   sources = {
-    require('null-ls').builtins.diagnostics.eslint_d.with({
+    null_ls.builtins.diagnostics.eslint_d.with({
       condition = function(utils)
         return utils.root_has_file({ '.eslintrc.js' })
       end,
     }),
-    require('null-ls').builtins.diagnostics.trail_space.with({}),
-    require('null-ls').builtins.formatting.eslint_d.with({
-      condition = function(utils)
-        return utils.root_has_file({ '.eslintrc.js' })
-      end,
-    }),
-    require('null-ls').builtins.formatting.prettierd,
-    require('null-ls').builtins.formatting.pint,
+    -- null_ls.builtins.diagnostics.trail_space,
+    null_ls.builtins.diagnostics.phpstan,
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.pint,
   },
 })
 
