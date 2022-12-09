@@ -61,13 +61,16 @@ nvim_lsp.gopls.setup(config())
 
 nvim_lsp.yamlls.setup(config())
 
-nvim_lsp.intelephense.setup(config())
+-- nvim_lsp.intelephense.setup(config())
+nvim_lsp.phpactor.setup(config())
 
 nvim_lsp.cssls.setup(config())
 
 nvim_lsp.eslint.setup(config())
 
 nvim_lsp.html.setup(config())
+
+nvim_lsp.emmet_ls.setup(config())
 
 nvim_lsp.jsonls.setup(config({
   settings = {

@@ -28,7 +28,7 @@ use('tpope/vim-commentary')
 use('tpope/vim-fugitive')
 use('tpope/vim-eunuch')
 use('tpope/vim-unimpaired')
-use('tpope/vim-sleuth')
+-- use('tpope/vim-sleuth')
 use('sheerun/vim-polyglot')
 use({
     'windwp/nvim-autopairs',
@@ -63,13 +63,6 @@ use({
       require('lualine').setup()
     end,
   })
--- use('vim-airline/vim-airline')
--- use({
---   'vim-airline/vim-airline-themes',
---   config = function ()
---     vim.g.airline_theme = 'onedark'
---   end
--- })
 
 use({
   'nvim-telescope/telescope.nvim',
@@ -78,6 +71,7 @@ use({
     { 'kyazdani42/nvim-web-devicons' },
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     { 'nvim-telescope/telescope-live-grep-args.nvim' },
+    { 'nvim-telescope/telescope-dap.nvim' },
   },
   config = function()
     require('gsinka.plugins.telescope')
@@ -149,6 +143,27 @@ use({
   config = function()
     require('gsinka.plugins.cmp')
   end,
+})
+
+use({
+    'jayp0521/mason-nvim-dap.nvim',
+    requires = {
+      'williamboman/mason.nvim',
+      'mfussenegger/nvim-dap',
+    },
+    config = function ()
+      require('gsinka.plugins.dap')
+    end
+})
+
+use({
+    'rcarriga/nvim-dap-ui',
+    requires = {
+      'mfussenegger/nvim-dap',
+    },
+    config = function ()
+      require('gsinka.plugins.dap-ui')
+    end
 })
 
 use({
