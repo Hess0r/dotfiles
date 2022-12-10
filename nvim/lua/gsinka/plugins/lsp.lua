@@ -25,13 +25,6 @@ local on_attach = function(client, bufnr)
       l = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", 'List workspace folders' },
       q = { "<cmd>lua require('telescope.builtin').diagnostics()<CR>", 'Workspace diagnostics' },
     },
-    g = {
-      name = 'LSP Definitions',
-      D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", 'Declaration' },
-      d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", 'Definitions' },
-      i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", 'Implementations' },
-      r = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", 'References' },
-    },
     r = {
       name = 'Refactor',
       n = { "<cmd>lua vim.lsp.buf.rename()<CR>", 'Rename' },
@@ -56,6 +49,13 @@ local on_attach = function(client, bufnr)
 
   nnoremap('', {
     K = { "<cmd>lua vim.lsp.buf.hover()<CR>", 'Hover' },
+    g = {
+      name = 'LSP Definitions',
+      D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", 'Declaration' },
+      d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", 'Definitions' },
+      i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", 'Implementations' },
+      r = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", 'References' },
+    },
     ['<C-k>'] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", 'Signature help' },
     ['[d'] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", 'Goto prev diagnostic' },
     [']d'] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", 'Goto next diagnostic' },
