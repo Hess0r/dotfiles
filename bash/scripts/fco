@@ -1,0 +1,7 @@
+#!/bin/sh
+
+branch=`git branch | fzf --no-multi --layout=reverse --height=10% --preview-window=right:hidden --info=inline | tr -d "*"`
+if [[ -z $branch ]]; then
+    return 0
+fi
+git checkout $branch

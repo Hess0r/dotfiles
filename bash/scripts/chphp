@@ -1,0 +1,9 @@
+#!/bin/sh
+
+php_exe=$(sudo update-alternatives --list php |
+    fzf --no-multi --preview-window=right:hidden)
+
+if [ -z "$php_exe" ]; then
+    return 0;
+fi
+sudo update-alternatives --set php $php_exe

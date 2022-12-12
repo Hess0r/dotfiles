@@ -146,6 +146,8 @@ alias phpstan='./vendor/bin/phpstan'
 
 alias dotfiles="cd $DOTFILES"
 
+alias tx='tmuxinator'
+
 alias gs='git status'
 alias gco='git checkout'
 alias ga='git add'
@@ -194,8 +196,7 @@ fi
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env"
 # ==========================================================
 
-if [ -d "$HOME/.shell.d" ]; then
-  for f in $HOME/.shell.d/*.sh; do
-    source $f
-  done
-fi
+# PATH
+# ==========================================================
+export PATH=$PATH:$HOME/.local/bin/scripts
+# ==========================================================

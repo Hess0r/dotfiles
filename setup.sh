@@ -3,7 +3,7 @@
 ln -sf "$PWD/bash/bashrc" "$HOME/.bashrc"
 ln -sf "$PWD/bash/inputrc" "$HOME/.inputrc"
 
-ln -snf "$PWD/shell.d" "$HOME/.shell.d"
+ln -snf "$PWD/bash/scripts" "$HOME/.local/bin/scripts"
 
 ln -sf "$PWD/tmux/tmux.conf" "$HOME/.tmux.conf"
 
