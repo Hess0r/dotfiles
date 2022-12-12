@@ -7,13 +7,4 @@ project=$(tmuxinator list -n |
 if [ -z "$project" ]; then
     return 0;
 fi
-tmuxinator start "$project" --no-attach
-
-if [ -n "$TMUX" ]; then
-    session=$(tmux list-sessions -F "#S" | fzf --prompt="Session: ")
-    if [ -n "$session" ]; then
-        tmux switch-client -t "$session"
-    fi
-else
-    tmux attach-session
-fi
+tmuxinator start "$project"
