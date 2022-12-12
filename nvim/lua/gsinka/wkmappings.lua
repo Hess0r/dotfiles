@@ -27,6 +27,7 @@ nnoremap('<leader>', {
       b = {"<cmd>lua require('telescope.builtin').git_branches()<CR>", 'Branches'},
       p = {"<cmd>Gdiffsplit<CR>", 'Diffsplit'},
       v = {"<cmd>GV<CR>", 'Log'},
+      g = {"<cmd>FloatermNew --name=lazygit lazygit<CR>", 'Lazygit floaterm'},
     },
     p = { "<cmd>lua require('telescope.builtin').find_files()<CR>", 'Find files' },
     ['<space>'] = { "<cmd>lua require('telescope.builtin').buffers()<CR>", 'Buffers' },
