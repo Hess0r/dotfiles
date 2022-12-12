@@ -26,6 +26,7 @@ nnoremap('<leader>', {
       d = {"<cmd>lua require('telescope.builtin').git_bcommits()<CR>", 'Buffer commits'},
       b = {"<cmd>lua require('telescope.builtin').git_branches()<CR>", 'Branches'},
       p = {"<cmd>Gdiffsplit<CR>", 'Diffsplit'},
+      v = {"<cmd>GV<CR>", 'Log'},
     },
     p = { "<cmd>lua require('telescope.builtin').find_files()<CR>", 'Find files' },
     ['<space>'] = { "<cmd>lua require('telescope.builtin').buffers()<CR>", 'Buffers' },

@@ -26,6 +26,7 @@ use('wbthomason/packer.nvim')
 
 use('tpope/vim-commentary')
 use('tpope/vim-fugitive')
+use('junegunn/gv.vim')
 use('tpope/vim-eunuch')
 use('tpope/vim-unimpaired')
 -- use('tpope/vim-sleuth')
