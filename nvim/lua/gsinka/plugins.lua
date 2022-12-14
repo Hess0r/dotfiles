@@ -29,8 +29,10 @@ use('tpope/vim-fugitive')
 use('junegunn/gv.vim')
 use('tpope/vim-eunuch')
 use('tpope/vim-unimpaired')
--- use('tpope/vim-sleuth')
+use('tpope/vim-sleuth')
 use('sheerun/vim-polyglot')
+use('jwalton512/vim-blade')
+use('rafamadriz/friendly-snippets')
 use({
     'windwp/nvim-autopairs',
     config = function()
