@@ -85,8 +85,8 @@ nvim_lsp.gopls.setup(config())
 
 nvim_lsp.yamlls.setup(config())
 
--- nvim_lsp.intelephense.setup(config())
-nvim_lsp.phpactor.setup(config())
+nvim_lsp.intelephense.setup(config())
+-- nvim_lsp.phpactor.setup(config())
 
 nvim_lsp.cssls.setup(config())
 
