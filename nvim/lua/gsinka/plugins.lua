@@ -30,9 +30,16 @@ use('junegunn/gv.vim')
 use('tpope/vim-eunuch')
 use('tpope/vim-unimpaired')
 use('tpope/vim-sleuth')
+use('tpope/vim-surround')
 use('sheerun/vim-polyglot')
 use('jwalton512/vim-blade')
 use('rafamadriz/friendly-snippets')
+use({
+  'karb94/neoscroll.nvim',
+  config= function()
+    require('neoscroll').setup()
+  end
+})
 use({
     'windwp/nvim-autopairs',
     config = function()
@@ -62,7 +69,16 @@ use({
     requires = 'kyazdani42/nvim-web-devicons',
     config = function()
       -- require('gsinka.plugins.lualine')
-      require('lualine').setup()
+    require('lualine').setup({
+      sections = {
+        lualine_c = {
+          {
+            'filename',
+            path = 1,
+          }
+        }
+      }
+    })
     end,
   })
 
@@ -212,6 +228,13 @@ use({
   config = function()
     require('trouble').setup()
   end,
+})
+
+use({
+  'glepnir/dashboard-nvim',
+  config = function()
+    require('gsinka.plugins.dashboard')
+  end
 })
 
 if packer_bootstrap then

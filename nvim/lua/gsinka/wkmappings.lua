@@ -16,6 +16,7 @@ nnoremap('<leader>', {
       d = { "<cmd>lua require('telescope.builtin').grep_string()<CR>", 'Grep string' },
       p = { "<cmd>lua require('telescope.builtin').live_grep()<CR>", 'Live grep' },
       o = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", 'LSP document symbols' },
+      O = { "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>", 'LSP workspace symbols' },
       m = { "<cmd>lua require('telescope.builtin').marks()<CR>", 'Marks' },
       w = { "<cmd>lua require('telescope.builtin').spell_suggest()<CR>", 'Spell suggest' },
     },

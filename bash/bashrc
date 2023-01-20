@@ -144,6 +144,8 @@ alias sail='./vendor/bin/sail'
 alias pint='./vendor/bin/pint'
 alias phpstan='./vendor/bin/phpstan'
 
+alias jigsaw='./vendor/bin/jigsaw'
+
 alias dotfiles="cd $DOTFILES"
 
 alias gs='git status'
