@@ -218,3 +218,23 @@ n () {
     rm -f "$NNN_TMPFILE" > /dev/null
   fi
 }
+
+nmux () {
+  if [[ "${NNNLVL:-0}" -ge 1 ]]; then
+    echo "nnn is already running"
+    return
+  fi
+
+  # Use export to ALWAYS cd on quit, otherwise its goind to cd on ^G
+  NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+  # export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+  \nnn "$@"
+
+  if [ -f "$NNN_TMPFILE" ]; then
+    workdir=`cat "$NNN_TMPFILE" | cut -f 2 -d " " | sed 's/"//g'`
+    echo $workdir
+    rm -f "$NNN_TMPFILE" > /dev/null
+    tmux new-session -A -c $workdir -s $(basename $workdir)
+  fi
+}
