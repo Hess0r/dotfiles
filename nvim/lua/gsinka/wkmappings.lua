@@ -34,7 +34,6 @@ nnoremap('<leader>', {
     ['<space>'] = { "<cmd>lua require('telescope.builtin').buffers()<CR>", 'Buffers' },
     ['?'] = { "<cmd>lua require('telescope.builtin').oldfiles()<CR>", 'Old files' },
     n = { "<cmd>NnnPicker<CR>", 'Nnn picker' },
-    x = { "<cmd>set spell!<CR>", 'Toggle spellcheck'},
     ['<F5>'] = { "<cmd>lua require('dap').continue()<CR>", 'Start debug' },
     b = {
       name = 'Debug',
