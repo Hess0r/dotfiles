@@ -34,6 +34,7 @@ nnoremap('<leader>', {
     ['<space>'] = { "<cmd>lua require('telescope.builtin').buffers()<CR>", 'Buffers' },
     ['?'] = { "<cmd>lua require('telescope.builtin').oldfiles()<CR>", 'Old files' },
     n = { "<cmd>NnnPicker<CR>", 'Nnn picker' },
+    e = { "<cmd>NnnPicker %:p:h<CR>", 'Nnn picker' },
     ['<F5>'] = { "<cmd>lua require('dap').continue()<CR>", 'Start debug' },
     b = {
       name = 'Debug',
@@ -57,12 +58,12 @@ nnoremap('<leader>', {
 
 nnoremap('', {
     ['<C-A-n>'] = { "<cmd>NnnExplorer %:p:h<CR>", 'Nnn explorer' },
-    ['<C-A-p>'] = { "<cmd>NnnPicker<CR>", 'Nnn picker' },
+    ['<C-A-p>'] = { "<cmd>NnnPicker %:p:h<CR>", 'Nnn picker' },
     ['<A-\'>'] = { ":FloatermToggle<CR>", 'Floaterm toggle' }
 })
 
 tnoremap('', {
-    ['<C-A-n>'] = { "<cmd>NnnExplorer %:p:h<CR>", 'Nnn explorer' },
+    ['<C-A-n>'] = { "<cmd>NnnExplorer<CR>", 'Nnn explorer' },
     ['<C-A-p>'] = { "<cmd>NnnPicker<CR>", 'Nnn picker' },
     ['<ESC><ESC>'] = { "<C-\\><C-n>", 'Escape' },
     ['<A-\'>'] ={ "<C-\\><C-n>:FloatermToggle<CR>", 'Floaterm toggle'},
