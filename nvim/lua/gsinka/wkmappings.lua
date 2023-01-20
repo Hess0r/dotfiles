@@ -48,6 +48,11 @@ nnoremap('<leader>', {
     h = {
       name = 'GitGutter'
     },
+    z = {
+      name = 'Session',
+      s = { "<cmd>SessionSave<CR>", 'Save' },
+      l = { "<cmd>SessionLoad<CR>", 'Load' },
+    },
     ['*'] = 'which_key_ignore',
 })
 
