@@ -34,6 +34,7 @@ use('tpope/vim-surround')
 use('sheerun/vim-polyglot')
 use('jwalton512/vim-blade')
 use('rafamadriz/friendly-snippets')
+use('pantharshit00/vim-prisma')
 use({
   'karb94/neoscroll.nvim',
   config= function()

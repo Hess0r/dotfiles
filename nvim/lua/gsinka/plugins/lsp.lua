@@ -98,6 +98,8 @@ nvim_lsp.emmet_ls.setup(config())
 
 nvim_lsp.tailwindcss.setup(config())
 
+nvim_lsp.prismals.setup(config())
+
 nvim_lsp.jsonls.setup(config({
   settings = {
     json = {
