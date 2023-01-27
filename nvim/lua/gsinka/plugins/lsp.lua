@@ -94,7 +94,9 @@ nvim_lsp.cssls.setup(config())
 
 nvim_lsp.html.setup(config())
 
-nvim_lsp.emmet_ls.setup(config())
+nvim_lsp.emmet_ls.setup(config({
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+}))
 
 nvim_lsp.tailwindcss.setup(config())
 

@@ -90,7 +90,7 @@ use({
     { 'kyazdani42/nvim-web-devicons' },
     { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
     { 'nvim-telescope/telescope-live-grep-args.nvim' },
-    { 'nvim-telescope/telescope-dap.nvim' },
+    -- { 'nvim-telescope/telescope-dap.nvim' },
   },
   config = function()
     require('gsinka.plugins.telescope')
@@ -177,26 +177,26 @@ use({
   end,
 })
 
-use({
-    'jayp0521/mason-nvim-dap.nvim',
-    requires = {
-      'williamboman/mason.nvim',
-      'mfussenegger/nvim-dap',
-    },
-    config = function ()
-      require('gsinka.plugins.dap')
-    end
-})
+-- use({
+--     'jayp0521/mason-nvim-dap.nvim',
+--     requires = {
+--       'williamboman/mason.nvim',
+--       'mfussenegger/nvim-dap',
+--     },
+--     config = function ()
+--       require('gsinka.plugins.dap')
+--     end
+-- })
 
-use({
-    'rcarriga/nvim-dap-ui',
-    requires = {
-      'mfussenegger/nvim-dap',
-    },
-    config = function ()
-      require('gsinka.plugins.dap-ui')
-    end
-})
+-- use({
+--     'rcarriga/nvim-dap-ui',
+--     requires = {
+--       'mfussenegger/nvim-dap',
+--     },
+--     config = function ()
+--       require('gsinka.plugins.dap-ui')
+--     end
+-- })
 
 use({
   'phpactor/phpactor',
@@ -233,6 +233,8 @@ use({
 
 use({
   'glepnir/dashboard-nvim',
+  event = 'VimEnter',
+  requires = 'kyazdani42/nvim-web-devicons',
   config = function()
     require('gsinka.plugins.dashboard')
   end
