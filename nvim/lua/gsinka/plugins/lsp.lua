@@ -8,7 +8,7 @@ require('mason-lspconfig').setup({ automatic_installation = true })
 local nvim_lsp = require('lspconfig')
 local null_ls = require('null-ls')
 
--- Use an on_attach function to only map the following keys
+-- Use an on_attach function to only map the following keyslsp
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
 
@@ -85,7 +85,13 @@ nvim_lsp.gopls.setup(config())
 
 nvim_lsp.yamlls.setup(config())
 
-nvim_lsp.intelephense.setup(config())
+nvim_lsp.intelephense.setup(config({
+  on_attach = function (client, bufnr)
+    on_attach(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end
+}))
 -- nvim_lsp.phpactor.setup(config())
 
 nvim_lsp.cssls.setup(config())
@@ -95,7 +101,7 @@ nvim_lsp.cssls.setup(config())
 nvim_lsp.html.setup(config())
 
 nvim_lsp.emmet_ls.setup(config({
-  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less' },
+  filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'blade' },
 }))
 
 nvim_lsp.tailwindcss.setup(config())

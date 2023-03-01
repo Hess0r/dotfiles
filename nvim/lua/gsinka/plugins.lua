@@ -110,19 +110,6 @@ use({
     require('gsinka.plugins.treesitter')
   end,
 })
-use({
-    'folke/tokyonight.nvim',
-    config = function()
-      require('gsinka.plugins.colors')
-    end
-})
-
-use({
-    'EdenEast/nightfox.nvim',
-    config = function()
-      require('gsinka.plugins.colors')
-    end
-})
 
 use({
     'navarasu/onedark.nvim',
@@ -238,6 +225,17 @@ use({
   config = function()
     require('gsinka.plugins.dashboard')
   end
+})
+
+use({
+  'tpope/vim-dadbod',
+  requires = {
+    'kristijanhusak/vim-dadbod-completion',
+    'kristijanhusak/vim-dadbod-ui',
+  },
+  config = function()
+    -- require('gsinka.plugins.sql')
+  end,
 })
 
 if packer_bootstrap then
