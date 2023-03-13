@@ -19,6 +19,7 @@ nnoremap('<leader>', {
       O = { "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>", 'LSP workspace symbols' },
       m = { "<cmd>lua require('telescope.builtin').marks()<CR>", 'Marks' },
       w = { "<cmd>lua require('telescope.builtin').spell_suggest()<CR>", 'Spell suggest' },
+      r = { "<cmd>lua require('telescope.builtin').resume()<CR>", 'Resume' },
     },
     g = {
       name = 'Git',

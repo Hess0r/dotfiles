@@ -55,21 +55,24 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lsp_signature_help' },
-    { name = 'luasnip' },
     { name = 'nvim_lua' },
+    { name = 'luasnip' },
     { name = 'buffer' },
     { name = 'path' },
   }),
   formatting = {
     format = lspkind.cmp_format({
       with_text = true,
-      maxwidth = 50,
+      -- maxwidth = 50,
       menu = {
         nvim_lsp = '[LSP]',
         nvim_lua = '[Lua]',
-        nvim_lsp = '[BUF]',
+        buffer = '[BUF]',
       }
     })
+  },
+  experimental = {
+    ghost_text = ture,
   },
 })
 

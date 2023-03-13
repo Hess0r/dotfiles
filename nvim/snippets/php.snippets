@@ -1,17 +1,38 @@
 snippet pubf "public method"
-	public function ${1}(${2}): $3
-	{
-		${0}
-	}
+    public function ${1}(${2}): $3
+    {
+        ${0: $LINE_COMMENT}
+    }
 
 snippet prof "protected method"
-	protected function ${1}(${2}): $3
-	{
-		${0}
-	}
+    protected function ${1}(${2}): $3
+    {
+        ${0: $LINE_COMMENT}
+    }
 
 snippet prif "private method"
-	private function ${1}(${2}): $3
-	{
-		${0}
-	}
+    private function ${1}(${2}): $3
+    {
+        ${0: $LINE_COMMENT}
+    }
+
+snippet class "class"
+    class ${1: $TM_FILENAME_BASE}
+    {
+        ${0: $LINE_COMMENT}
+    }
+
+snippet test "test with annotation"
+    /**
+     * @test
+     */
+    public function ${1}(): void
+    {
+        ${0: $LINE_COMMENT}
+    }
+
+snippet testp "test with prefix"
+    public function test_${1}(): void
+    {
+        ${0: $LINE_COMMENT}
+    }
