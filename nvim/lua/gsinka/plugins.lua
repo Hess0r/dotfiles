@@ -238,6 +238,13 @@ use({
   end,
 })
 
+use({
+  'vim-test/vim-test',
+  config = function()
+    require('gsinka.plugins.vim-test')
+  end
+})
+
 if packer_bootstrap then
   require('packer').sync()
 end

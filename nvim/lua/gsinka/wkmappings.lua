@@ -53,6 +53,14 @@ nnoremap('<leader>', {
       s = { "<cmd>SessionSave<CR>", 'Save' },
       l = { "<cmd>SessionLoad<CR>", 'Load' },
     },
+    t = {
+      name = 'Testing',
+      n = { "<cmd>TestNearest<CR>", 'Test nearest' },
+      f = { "<cmd>TestFile<CR>", 'Test file' },
+      s = { "<cmd>TestSuite<CR>", 'Test suite' },
+      l = { "<cmd>TestLast<CR>", 'Test last' },
+      v = { "<cmd>TestVisit<CR>", 'Test visit' },
+    },
     ['*'] = 'which_key_ignore',
 })
 
