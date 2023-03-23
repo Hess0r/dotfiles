@@ -72,7 +72,7 @@ cmp.setup({
     })
   },
   experimental = {
-    ghost_text = ture,
+    ghost_text = true,
   },
 })
 

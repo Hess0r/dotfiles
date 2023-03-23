@@ -1,5 +1,6 @@
-local nvim_treesitter = require'nvim-treesitter.configs'
-nvim_treesitter.setup {
+local nvim_treesitter = require('nvim-treesitter.configs')
+
+nvim_treesitter.setup({
   highlight = {
     enable = true,
   },
@@ -48,5 +49,4 @@ nvim_treesitter.setup {
     'haskell',
     'go', 'gomod',
   },
-  -- ensure_installed = "maintained",
-}
+})
