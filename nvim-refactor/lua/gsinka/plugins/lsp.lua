@@ -110,7 +110,16 @@ nvim_lsp.jsonls.setup(config({
   }
 }))
 
-nvim_lsp.lua_ls.setup(config())
+nvim_lsp.lua_ls.setup(config({
+  single_file_support = true,
+  settings = {
+    Lua = {
+      workspace = {
+        checkThirdParty = false,
+      }
+    }
+  }
+}))
 
 null_ls.setup({
   sources = {

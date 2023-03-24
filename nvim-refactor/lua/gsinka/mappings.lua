@@ -18,13 +18,9 @@ wk.register({
     },
     g = {
       name = 'Git',
-      -- s = {"<cmd>lua require('telescope.builtin').git_status()<CR>", 'Status'},
-      -- c = {"<cmd>lua require('telescope.builtin').git_commits()<CR>", 'Commits'},
-      -- d = {"<cmd>lua require('telescope.builtin').git_bcommits()<CR>", 'Buffer commits'},
-      -- b = {"<cmd>lua require('telescope.builtin').git_branches()<CR>", 'Branches'},
-      -- p = {"<cmd>Gdiffsplit<CR>", 'Diffsplit'},
       l = {"<cmd>GV<CR>", 'Log'},
       g = {"<cmd>FloatermNew --name=lazygit lazygit<CR>", 'Lazygit floaterm'},
+      d = {"<cmd>DiffviewFileHistory %<CR>", 'Buffer commits'},
     },
     p = { "<cmd>lua require('telescope.builtin').find_files()<CR>", 'Find files' },
     ['<space>'] = { "<cmd>lua require('telescope.builtin').buffers()<CR>", 'Buffers' },
@@ -45,8 +41,7 @@ wk.register({
     },
     z = {
       name = 'Session',
-      s = { "<cmd>SessionSave<CR>", 'Save' },
-      l = { "<cmd>SessionLoad<CR>", 'Load' },
+      l = { "<cmd>lua require('persistence').load()<CR>", 'Load' },
     },
     t = {
       name = 'Testing',
@@ -55,6 +50,10 @@ wk.register({
       s = { "<cmd>TestSuite<CR>", 'Test suite' },
       l = { "<cmd>TestLast<CR>", 'Test last' },
       v = { "<cmd>TestVisit<CR>", 'Test visit' },
+    },
+    x = {
+      name = 'Trouble',
+      x = {"<cmd>TroubleToggle<CR>", 'Trouble toggle'},
     },
     ['*'] = 'which_key_ignore',
 }, { prefix = '<leader>' })
