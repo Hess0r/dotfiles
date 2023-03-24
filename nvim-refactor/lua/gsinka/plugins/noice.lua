@@ -12,6 +12,7 @@ require('noice').setup({
     long_message_to_split = false, -- long messages will be sent to a split
     inc_rename = false, -- enables an input dialog for inc-rename.nvim
     lsp_doc_border = false, -- add a border to hover docs and signature help
+    cmdline_output_to_split = false,
   },
   cmdline = {
     view = 'cmdline',
@@ -33,5 +34,15 @@ require('noice').setup({
       },
       opts = { skip = true },
     }
-  }
+  },
+  commands = {
+    all = {
+      view = "split",
+      opts = { enter = true, format = "details" },
+      filter = {},
+    }
+  },
+  -- messages = {
+  --   enabled = false,
+  -- }
 })

@@ -11,7 +11,7 @@ return {
     end,
   },
 
-	'sheerun/vim-polyglot',
+  -- 'sheerun/vim-polyglot',
 
-	'jwalton512/vim-blade',
+  -- 'jwalton512/vim-blade',
 }

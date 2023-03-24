@@ -17,6 +17,7 @@ return {
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'onedark'
+      vim.cmd([[ hi FloatBorder guibg=bg ]])
     end,
   },
 

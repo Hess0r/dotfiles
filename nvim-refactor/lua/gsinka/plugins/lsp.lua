@@ -86,11 +86,8 @@ nvim_lsp.intelephense.setup(config({
     client.server_capabilities.documentRangeFormattingProvider = false
   end
 }))
--- nvim_lsp.phpactor.setup(config())
 
 nvim_lsp.cssls.setup(config())
-
--- nvim_lsp.eslint.setup(config())
 
 nvim_lsp.html.setup(config())
 
@@ -128,8 +125,10 @@ null_ls.setup({
         return utils.root_has_file({ '.eslintrc.js' })
       end,
     }),
-    -- null_ls.builtins.diagnostics.trail_space,
     null_ls.builtins.diagnostics.phpstan,
+
+    null_ls.builtins.code_actions.gitsigns,
+
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.pint,
   },
