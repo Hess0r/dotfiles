@@ -13,6 +13,41 @@ return {
   },
 
   {
+    'nvim-lualine/lualine.nvim',
+    dependencies = {
+      'kyazdani42/nvim-web-devicons',
+      'folke/noice.nvim',
+    },
+    config = function ()
+      require('lualine').setup(
+        {
+          options = {
+            icons_enabled = false,
+            theme = 'onedark',
+            component_separators = '|',
+            section_separators = '',
+          },
+          sections = {
+            lualine_c = {
+              {
+                'filename',
+                path = 1,
+              }
+            },
+            lualine_x = {
+              {
+                require('noice').api.status.mode.get,
+                cond = require('noice').api.status.mode.has,
+              },
+              'encoding', 'fileformat', 'filetype',
+            },
+          },
+        }
+      )
+    end,
+  },
+
+  {
     'karb94/neoscroll.nvim',
     config = true,
   },

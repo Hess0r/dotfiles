@@ -22,29 +22,6 @@ return {
   },
 
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = {
-      'kyazdani42/nvim-web-devicons',
-    },
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = 'onedark',
-        component_separators = '|',
-        section_separators = '',
-      },
-      sections = {
-        lualine_c = {
-          {
-            'filename',
-            path = 1,
-          }
-        }
-      }
-    },
-  },
-
-  {
     'lukas-reineke/indent-blankline.nvim',
     opts = {
       char = '┊',
@@ -86,6 +63,16 @@ return {
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     opts = {},
   },
+
+  {
+    'petertriho/nvim-scrollbar',
+    dependencies = 'lewis6991/gitsigns.nvim',
+    event = 'BufReadPost',
+    config = function()
+      require('scrollbar').setup()
+      require('scrollbar.handlers.gitsigns').setup()
+    end,
+  }
 
   -- {
   --   'RRethy/vim-illuminate',
