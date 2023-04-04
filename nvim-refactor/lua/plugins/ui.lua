@@ -1,22 +1,22 @@
 return {
   -- This thing is experimental
-  {
-    'folke/noice.nvim',
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
-      'echasnovski/mini.nvim',
-    },
-    config = function()
-      require('gsinka.plugins.noice')
-    end,
-  },
+  -- {
+  --   'folke/noice.nvim',
+  --   dependencies = {
+  --     'MunifTanjim/nui.nvim',
+  --     'rcarriga/nvim-notify',
+  --     'echasnovski/mini.nvim',
+  --   },
+  --   config = function()
+  --     require('gsinka.plugins.noice')
+  --   end,
+  -- },
 
   {
     'nvim-lualine/lualine.nvim',
     dependencies = {
       'kyazdani42/nvim-web-devicons',
-      'folke/noice.nvim',
+      -- 'folke/noice.nvim',
     },
     config = function ()
       require('lualine').setup(
@@ -34,13 +34,13 @@ return {
                 path = 1,
               }
             },
-            lualine_x = {
-              {
-                require('noice').api.status.mode.get,
-                cond = require('noice').api.status.mode.has,
-              },
-              'encoding', 'fileformat', 'filetype',
-            },
+            -- lualine_x = {
+            --   {
+            --     require('noice').api.status.mode.get,
+            --     cond = require('noice').api.status.mode.has,
+            --   },
+            --   'encoding', 'fileformat', 'filetype',
+            -- },
           },
         }
       )

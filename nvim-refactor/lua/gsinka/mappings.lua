@@ -21,6 +21,7 @@ wk.register({
       l = {"<cmd>GV<CR>", 'Log'},
       g = {"<cmd>FloatermNew --name=lazygit lazygit<CR>", 'Lazygit floaterm'},
       d = {"<cmd>DiffviewFileHistory %<CR>", 'Buffer commits'},
+      h = {"<cmd>0Gclog<CR>", 'Buffer revision history'},
     },
     p = { "<cmd>lua require('telescope.builtin').find_files()<CR>", 'Find files' },
     ['<space>'] = { "<cmd>lua require('telescope.builtin').buffers()<CR>", 'Buffers' },
