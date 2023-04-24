@@ -1,0 +1,156 @@
+{
+  "workbench.colorTheme": "One Dark Pro Flat",
+  "workbench.activityBar.visible": false,
+  "editor.minimap.enabled": false,
+  "editor.fontFamily": "'JetBrainsMono Nerd Font Mono', 'Droid Sans Mono', 'monospace', monospace",
+  "workbench.startupEditor": "none",
+  "workbench.iconTheme": "material-icon-theme",
+  "window.newWindowDimensions": "inherit",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[php]": {
+    "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+  },
+  "[blade]": {
+    "editor.defaultFormatter": "shufo.vscode-blade-formatter"
+  },
+  "blade.format.enable": true,
+  "eslint.validate": [
+    "typescript",
+    "typescriptreact"
+  ],
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "editor.suggestSelection": "first",
+  "cSpell.enabled": false,
+  "php-cs-fixer.executablePath": "php-cs-fixer",
+  "php-cs-fixer.executablePathWindows": "",
+  "php-cs-fixer.onsave": false,
+  "php-cs-fixer.rules": "@PSR12",
+  "php-cs-fixer.config": ".php-cs-fixer.php;.php-cs-fixer.dist.php;.php_cs;.php_cs.dist",
+  "php-cs-fixer.allowRisky": false,
+  "php-cs-fixer.pathMode": "override",
+  "php-cs-fixer.exclude": [],
+  "php-cs-fixer.autoFixByBracket": true,
+  "php-cs-fixer.autoFixBySemicolon": false,
+  "php-cs-fixer.formatHtml": false,
+  "php-cs-fixer.documentFormattingProvider": true,
+  "phpcs.standard": "PSR12",
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "editor.action.formatDocument"
+      ],
+      "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    },
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "t"
+      ],
+      "commands": [
+        "workbench.action.showAllSymbols"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.gotoSymbol"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "k"
+      ],
+      "commands": [
+        "editor.action.showHover"
+      ],
+      "when": "editorTextFocus"
+    },
+    {
+      "before": [
+        "<C-n>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
+    },
+    {
+      "before": [
+        "K"
+      ],
+      "commands": [
+        "lineBreakInsert"
+      ],
+      "silent": true
+    }
+  ],
+  "vim.leader": "<space>",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "todo-tree.general.tags": [
+    "BUG",
+    "HACK",
+    "FIXME",
+    "TODO",
+    "XXX",
+    "[ ]",
+    "[x]",
+    "FEATURE",
+    "NOTE"
+  ],
+  "laravel-pint.enable": true,
+  "editor.formatOnSave": true,
+  "diffEditor.ignoreTrimWhitespace": false
+}
