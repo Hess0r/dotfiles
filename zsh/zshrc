@@ -36,8 +36,8 @@ path=(
   $path
 )
 
-export EDITOR=vim
-export GIT_EDITOR=vim
+export EDITOR=nvim
+export GIT_EDITOR=nvim
 
 export DOTFILES="$HOME/dotfiles"
 export NNN_FIFO='/tmp/nnn.fifo'
