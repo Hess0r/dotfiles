@@ -14,6 +14,7 @@ require('nvim-treesitter.configs').setup({
     'prisma',
     'haskell',
     'go', 'gomod',
+    'c_sharp',
   },
   context_commentstring = {
     enable = true,
@@ -22,8 +23,8 @@ require('nvim-treesitter.configs').setup({
 
   highlight = { enable = true },
   indent = {
-    -- enable = true,
-    disable = { 'python' }
+    enable = true,
+    disable = { 'python', 'javascript', 'javascriptreact', 'typescriptreact', 'typescript' }
   },
   incremental_selection = {
     enable = true,

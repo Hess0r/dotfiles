@@ -12,6 +12,7 @@ HIST_STAMPS="yyyy-mm-dd"
 
 plugins=(
     brew
+    composer
     fd
     fzf
     gh
@@ -30,6 +31,7 @@ typeset -U path
 BREW_PREFIX=$(brew --prefix)
 
 path=(
+  $HOME/.local/bin
   $BREW_PREFIX/opt/sqlite/bin
   $path
 )
@@ -47,6 +49,15 @@ alias copy="xclip -selection clipboard"
 alias paste="xclip -o -selection clipboard"
 alias cat="bat"
 alias dotfiles="cd $DOTFILES"
+
+alias artisan="php artisan"
+alias pas="php artisan serve"
+alias pam="php artisan migrate"
+alias pamf="php artisan migrate:fresh"
+alias pamfs="php artisan migrate:fresh --seed"
+alias pint='./vendor/bin/pint'
+
+eval "$(_SQLITE_UTILS_COMPLETE=zsh_source sqlite-utils)"
 
 n () {
   if [[ "${NNNLVL:-0}" -ge 1 ]]; then
