@@ -1,0 +1,7 @@
+#!/bin/bash
+
+params="$@"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+sudo /bin/bash -c "\. $NVM_DIR/nvm.sh && npm $params"

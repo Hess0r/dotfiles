@@ -8,9 +8,9 @@ ln -snf "$PWD/bash/scripts" "$HOME/.local/bin/scripts"
 ln -sf "$PWD/tmux/tmux.conf" "$HOME/.tmux.conf"
 
 rm -rf "$HOME/.config/nvim"
-ln -sf "$PWD/nvim" "$HOME/.config"
+ln -sf "$PWD/nvim-refactor" "$HOME/.config/nvim"
 
-ln -sf "$PWD/git/personal" "$HOME/.gitconfig"
+ ln -sf "$PWD/git/work" "$HOME/.gitconfig"
 ln -sf "$PWD/git/gitignore_global" "$HOME/.gitignore_global"
 
 mkdir -p "$HOME/.config/starship"

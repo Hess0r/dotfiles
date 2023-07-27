@@ -13,12 +13,6 @@ sudo apt install \
   tmux \
   software-properties-common
 
-sudo add-apt-repository ppa:neovim-ppa/stable
-
-sudo apt update
-sudo apt install \
-  neovim
-
 mkdir -p ~/.local/bin
 ln -s /usr/bin/batcat ~/.local/bin/bat
 ln -s $(which fdfind) ~/.local/bin/fd
