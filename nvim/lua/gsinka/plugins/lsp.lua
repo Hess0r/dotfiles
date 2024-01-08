@@ -1,23 +1,18 @@
-local keymap = require('gsinka.keymap')
-local nnoremap = keymap.wknnoremap
-local vnoremap = keymap.wkvnoremap
+local wk = require('which-key')
 
 require('mason').setup()
-require('mason-lspconfig').setup({ automatic_installation = true })
+require('mason-lspconfig').setup({ automatic_installation = { exclude = { "hls" } } })
 
 local nvim_lsp = require('lspconfig')
 local null_ls = require('null-ls')
 
--- Use an on_attach function to only map the following keyslsp
--- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
-  -- Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  nnoremap('<leader>', {
+  wk.register({
     w = {
       name = 'Workspace',
       a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", 'Add workspace folder' },
@@ -31,23 +26,22 @@ local on_attach = function(client, bufnr)
     },
     c = {
       name = 'Code',
-      -- a = { "<cmd>lua require('telescope.builtin').lsp_code_actions()<CR>", 'Code actions' },
       a = { "<cmd>CodeActionMenu<CR>", 'Code actions' },
     },
     D = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", 'Type definition' },
     e = { "<cmd>lua vim.diagnostic.open_float()<CR>", 'Open float' },
     q = { "<cmd>lua require('telescope.builtin').diagnostics({bufnr=0})<CR>", 'Buffer diagnostics' },
     f = { "<cmd>lua vim.lsp.buf.format({ async = true })<CR>", 'Format' },
-  })
+  }, { prefix = '<leader>' })
 
-  vnoremap('<leader>', {
+  wk.register({
       c = {
         name = 'Code',
         a = { "<cmd>CodeActionMenu<CR>", 'Code actions' },
       },
-    })
+    }, { prefix = '<leader>', mode = 'v' })
 
-  nnoremap('', {
+  wk.register({
     K = { "<cmd>lua vim.lsp.buf.hover()<CR>", 'Hover' },
     g = {
       name = 'LSP Definitions',
@@ -92,11 +86,8 @@ nvim_lsp.intelephense.setup(config({
     client.server_capabilities.documentRangeFormattingProvider = false
   end
 }))
--- nvim_lsp.phpactor.setup(config())
 
 nvim_lsp.cssls.setup(config())
-
--- nvim_lsp.eslint.setup(config())
 
 nvim_lsp.html.setup(config())
 
@@ -116,15 +107,32 @@ nvim_lsp.jsonls.setup(config({
   }
 }))
 
+nvim_lsp.lua_ls.setup(config({
+  single_file_support = true,
+  settings = {
+    Lua = {
+      workspace = {
+        checkThirdParty = false,
+      }
+    }
+  }
+}))
+
+nvim_lsp.hls.setup(config())
+
+nvim_lsp.elmls.setup(config())
+
 null_ls.setup({
   sources = {
     null_ls.builtins.diagnostics.eslint_d.with({
       condition = function(utils)
-        return utils.root_has_file({ '.eslintrc.js' })
+        return utils.root_has_file({ '.eslintrc.js', '.eslintrc.json' })
       end,
     }),
-    -- null_ls.builtins.diagnostics.trail_space,
-    null_ls.builtins.diagnostics.phpstan,
+    -- null_ls.builtins.diagnostics.phpstan,
+
+    null_ls.builtins.code_actions.gitsigns,
+
     null_ls.builtins.formatting.prettierd,
     null_ls.builtins.formatting.pint,
   },

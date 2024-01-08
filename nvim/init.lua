@@ -1,4 +1,4 @@
 require('gsinka.sets')
 require('gsinka.plugins')
--- require('gsinka.mappings')
-require('gsinka.wkmappings')
+require('gsinka.utils')
+require('gsinka.mappings')
