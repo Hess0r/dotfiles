@@ -15,4 +15,14 @@ return {
     event = 'BufReadPre',
     config = true,
   },
+
+  {
+    'iamcco/markdown-preview.nvim',
+  },
+  {
+    'stevearc/overseer.nvim',
+    config = function ()
+      require('gsinka.plugins.overseer')
+    end
+  }
 }

@@ -30,6 +30,8 @@ vim.o.shiftwidth = 2
 vim.o.smarttab = true
 vim.o.expandtab = true
 
+vim.o.relativenumber = true
+
 -- vim.o.shortmess = vim.o.shortmess .. 'c'
 -- vim.o.wildignore = vim.o.wildignore .. '*/tmp/*'
 -- vim.o.wildignore = vim.o.wildignore .. '*/vendor/*'

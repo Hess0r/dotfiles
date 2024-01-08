@@ -1,3 +1,5 @@
+require('ts_context_commentstring').setup({})
+
 require('nvim-treesitter.configs').setup({
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = {
@@ -12,15 +14,14 @@ require('nvim-treesitter.configs').setup({
     'javascript', 'typescript', 'tsx', 'jsdoc',
     'json', 'jsonc', 'json5',
     'prisma',
-    'haskell',
+    'haskell', 'elm',
     'go', 'gomod',
     'c_sharp',
   },
-  context_commentstring = {
-    enable = true,
-    enable_autocmd = false,
-  },
-
+  -- context_commentstring = {
+  --   enable = true,
+  --   enable_autocmd = false,
+  -- },
   highlight = { enable = true },
   indent = {
     enable = true,

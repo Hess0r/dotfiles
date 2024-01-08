@@ -1,7 +1,7 @@
 local wk = require('which-key')
 
 require('mason').setup()
-require('mason-lspconfig').setup({ automatic_installation = true })
+require('mason-lspconfig').setup({ automatic_installation = { exclude = { "hls" } } })
 
 local nvim_lsp = require('lspconfig')
 local null_ls = require('null-ls')
@@ -117,6 +117,10 @@ nvim_lsp.lua_ls.setup(config({
     }
   }
 }))
+
+nvim_lsp.hls.setup(config())
+
+nvim_lsp.elmls.setup(config())
 
 null_ls.setup({
   sources = {
