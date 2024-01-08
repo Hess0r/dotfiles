@@ -61,6 +61,8 @@ alias pamf="php artisan migrate:fresh"
 alias pamfs="php artisan migrate:fresh --seed"
 alias pint='./vendor/bin/pint'
 
+alias lg="lazygit"
+
 eval "$(_SQLITE_UTILS_COMPLETE=zsh_source sqlite-utils)"
 
 n () {

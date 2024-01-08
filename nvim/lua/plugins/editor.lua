@@ -28,7 +28,6 @@ return {
       indent = {
         char = '┊',
       },
-      -- show_trailing_blankline_indent = false,
     },
   },
 
@@ -76,11 +75,4 @@ return {
       require('scrollbar.handlers.gitsigns').setup()
     end,
   }
-
-  -- {
-  --   'RRethy/vim-illuminate',
-  --   config = function()
-  --     require('gsinka.plugins.illuminate')
-  --   end
-  -- },
 }

@@ -10,8 +10,4 @@ return {
       require('gsinka.plugins.treesitter')
     end,
   },
-
-  -- 'sheerun/vim-polyglot',
-
-  -- 'jwalton512/vim-blade',
 }

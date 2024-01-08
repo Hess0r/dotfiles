@@ -24,14 +24,4 @@ return {
     'weilbith/nvim-code-action-menu',
     cmd = 'CodeActionMenu',
   },
-
-  -- {
-  --   'glepnir/lspsaga.nvim',
-  --   event = 'BufRead',
-  --   dependencies = {
-  --     'kyazdani42/nvim-web-devicons',
-  --     'nvim-treesitter/nvim-treesitter',
-  --   },
-  --   config = true,
-  -- },
 };

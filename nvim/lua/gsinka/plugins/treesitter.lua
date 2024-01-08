@@ -2,26 +2,23 @@ require('ts_context_commentstring').setup({})
 
 require('nvim-treesitter.configs').setup({
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = {
-    'lua', 'c', 'bash', 'vim', 'make', 'regex',
-    'gitcommit', 'gitattributes', 'git_rebase',
-    'yaml', 'toml', 'ninja',
-    'dockerfile',
-    'markdown', 'markdown_inline',
-    'todotxt', 'jq', 'comment',
-    'html', 'css', 'scss',
-    'php', 'phpdoc',
-    'javascript', 'typescript', 'tsx', 'jsdoc',
-    'json', 'jsonc', 'json5',
-    'prisma',
-    'haskell', 'elm',
-    'go', 'gomod',
-    'c_sharp',
-  },
-  -- context_commentstring = {
-  --   enable = true,
-  --   enable_autocmd = false,
+  -- ensure_installed = {
+  --   'lua', 'c', 'bash', 'vim', 'make', 'regex',
+  --   'gitcommit', 'gitattributes', 'git_rebase',
+  --   'yaml', 'toml', 'ninja',
+  --   'dockerfile',
+  --   'markdown', 'markdown_inline',
+  --   'todotxt', 'jq', 'comment',
+  --   'html', 'css', 'scss',
+  --   'php', 'phpdoc',
+  --   'javascript', 'typescript', 'tsx', 'jsdoc',
+  --   'json', 'jsonc', 'json5',
+  --   'prisma',
+  --   'haskell', 'elm',
+  --   'go', 'gomod',
+  --   'c_sharp',
   -- },
+  auto_install = true,
   highlight = { enable = true },
   indent = {
     enable = true,
