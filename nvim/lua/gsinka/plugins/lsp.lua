@@ -7,7 +7,6 @@ local nvim_lsp = require('lspconfig')
 local null_ls = require('null-ls')
 
 local on_attach = function(client, bufnr)
-
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -35,11 +34,11 @@ local on_attach = function(client, bufnr)
   }, { prefix = '<leader>' })
 
   wk.register({
-      c = {
-        name = 'Code',
-        a = { "<cmd>CodeActionMenu<CR>", 'Code actions' },
-      },
-    }, { prefix = '<leader>', mode = 'v' })
+    c = {
+      name = 'Code',
+      a = { "<cmd>CodeActionMenu<CR>", 'Code actions' },
+    },
+  }, { prefix = '<leader>', mode = 'v' })
 
   wk.register({
     K = { "<cmd>lua vim.lsp.buf.hover()<CR>", 'Hover' },
@@ -54,7 +53,6 @@ local on_attach = function(client, bufnr)
     ['[d'] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", 'Goto prev diagnostic' },
     [']d'] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", 'Goto next diagnostic' },
   })
-
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -75,12 +73,21 @@ nvim_lsp.bashls.setup(config())
 
 nvim_lsp.dockerls.setup(config())
 
-nvim_lsp.gopls.setup(config())
+nvim_lsp.gopls.setup(config({
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+    }
+  }
+}))
 
 nvim_lsp.yamlls.setup(config())
 
 nvim_lsp.intelephense.setup(config({
-  on_attach = function (client, bufnr)
+  on_attach = function(client, bufnr)
     on_attach(client, bufnr)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
