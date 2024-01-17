@@ -49,10 +49,13 @@ local on_attach = function(client, bufnr)
       i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", 'Implementations' },
       r = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", 'References' },
     },
-    ['<C-k>'] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", 'Signature help' },
     ['[d'] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", 'Goto prev diagnostic' },
     [']d'] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", 'Goto next diagnostic' },
   })
+
+  wk.register({
+    ['<C-k>'] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", 'Signature help' },
+  }, { mode = 'i' })
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
